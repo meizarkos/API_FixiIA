@@ -1,0 +1,30 @@
+{
+  "name": "api_fixiia",
+  "version": "1.0.0",
+  "description": "API FOR FIXIIA",
+  "main": "main.ts",
+  "scripts": {
+    "dev": "nodemon --watch .",
+    "start": "tsc --outDir dist && node dist/main.js",
+    "build": "tsc --outDir dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.21",
+    "@types/jwt-express": "^1.1.6",
+    "@types/node": "^20.11.30",
+    "nodemon": "^3.1.0",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^2.0.0-beta.2",
+    "express": "^5.0.0-beta.2",
+    "jwt-express": "^1.1.0",
+    "mariadb": "^3.3.0",
+    "sequelize": "^6.37.3",
+    "ts-node": "^10.9.2"
+  }
+}
