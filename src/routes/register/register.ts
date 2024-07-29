@@ -7,6 +7,9 @@ import { Model, ModelStatic } from 'sequelize';
 
 async function register(req:Request,res:Response,model :ModelStatic<Model<any, any>>){
     try {
+        if(!req.body.email || !req.body.password){
+            await model.create(req.body)
+        }
         const salt = await bcrypt.genSalt(10)
         req.body.password =  await bcrypt.hash(req.body.password,salt)
 

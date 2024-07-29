@@ -8,7 +8,11 @@ async function login(req:Request,res:Response,model :ModelStatic<Model<any, any>
         const email = req.body.email;
         const password = req.body.password;
         try {
-            const valeur = await model.findOne({where:{ email }}) as Model;
+            if(!email || !password){
+                res.status(401).send({ message: "Wrong credentials" });
+                return;
+            }
+            const valeur = await model.findOne({where:{ email }});
 
             if (!valeur) {
                 res.status(401).send({ message: "Wrong credentials" });
