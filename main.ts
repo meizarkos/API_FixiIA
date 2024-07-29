@@ -4,9 +4,9 @@ import jwt from "jwt-express";
 import { startOfDatabase } from "./src/utils";
 import { errorHandler } from "./src/utils";
 import { keyToken } from "./src/utils/data";
-// import * as routes from './src/routes';
-// import * as cruds from './src/models/crud';
-//import { patchRoute, createRoute, getAllRoute, getRoute, deleteRoute, createRouteId, getByIdInToken} from './src/routes/crud';
+//import * as routes from './src/routes';
+import * as cruds from './src/models/crud';
+import { patchRoute, createRoute, getAllRoute, getRoute, deleteRoute, createRouteId, getByIdInToken} from './src/routes/crud';
 
 startOfDatabase();
 
@@ -23,15 +23,15 @@ app.use(
 //   routes[key](app);
 // });
 
-// Object.keys(cruds).forEach((key) => {
-//   patchRoute(app, cruds[key]);
-//   createRoute(app, cruds[key]);
-//   createRouteId(app, cruds[key]);
-//   getAllRoute(app, cruds[key]);
-//   getRoute(app, cruds[key]);
-//   getByIdInToken(app, cruds[key]);
-//   deleteRoute(app, cruds[key]);
-// });
+Object.keys(cruds).forEach((key) => {
+  patchRoute(app, cruds[key]);
+  createRoute(app, cruds[key]);
+  createRouteId(app, cruds[key]);
+  getAllRoute(app, cruds[key]);
+  getRoute(app, cruds[key]);
+  getByIdInToken(app, cruds[key]);
+  deleteRoute(app, cruds[key]);
+});
 
 app.get("/", (_req, res) => {
   res.json({ message: "The API is working"});
