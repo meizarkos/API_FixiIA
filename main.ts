@@ -4,9 +4,12 @@ import jwt from "jwt-express";
 import { startOfDatabase } from "./src/utils";
 import { errorHandler } from "./src/utils";
 import { keyToken } from "./src/utils/data";
-//import * as routes from './src/routes';
+import * as routes from './src/routes';
 import * as cruds from './src/models/crud';
-import { patchRoute, createRoute, getAllRoute, getRoute, deleteRoute, createRouteId, getByIdInToken} from './src/routes/crud';
+import { patchRouteAdmin , patchByIdInToken } from './src/routes/crud';
+import { deleteRouteAdmin, deleteByIdInToken} from './src/routes/crud';
+import { createRouteAdmin , createRouteId } from './src/routes/crud';
+import { getAllModelAdmin, getDetailModelAdmin, getByIdInToken } from './src/routes/crud';
 
 startOfDatabase();
 
@@ -19,18 +22,20 @@ app.use(
   }),
 );
 
-// Object.keys(routes).forEach((key) => {
-//   routes[key](app);
-// });
+Object.keys(routes).forEach((key) => {
+  routes[key](app);
+});
 
 Object.keys(cruds).forEach((key) => {
-  patchRoute(app, cruds[key]);
-  createRoute(app, cruds[key]);
+  patchRouteAdmin(app, cruds[key]);
+  patchByIdInToken(app, cruds[key]);
+  deleteRouteAdmin(app, cruds[key]);
+  deleteByIdInToken(app, cruds[key]);
+  createRouteAdmin(app, cruds[key]);
   createRouteId(app, cruds[key]);
-  getAllRoute(app, cruds[key]);
-  getRoute(app, cruds[key]);
+  getAllModelAdmin(app, cruds[key]);
+  getDetailModelAdmin(app, cruds[key]);
   getByIdInToken(app, cruds[key]);
-  deleteRoute(app, cruds[key]);
 });
 
 app.get("/", (_req, res) => {

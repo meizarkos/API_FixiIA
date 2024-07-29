@@ -40,7 +40,7 @@ async function patch(res:Response,req:Request,config:CrudAdmin,id:Identifier){
     }
 }
 
-export const patchRoute = (app: Application, config: CrudAdmin) => {
+export const patchRouteAdmin = (app: Application, config: CrudAdmin) => {
     app.patch(`${config.route}/:uuid`, async (req: Request, res: Response) => {
         if(config.patch !== undefined && config.patch === false){
             res.status(500).json({ error: "Error in the server", message: 'You aren t suppose to use this model like this' });
