@@ -83,7 +83,7 @@ export const createRouteAdmin = (app: Application, config: CrudAdmin) => {
 export const createRouteId = (app: Application, config: CrudAdmin) => {
     app.post(config.route+"id", async (req: Request, res: Response) => {
         if(config.champNameToFillWithTokenId === undefined){
-            res.status(500).json({ error: "Error in the server", message: 'You either forgot to change the model or aren t suppose to use this model like this' });
+            res.status(500).json({ error: "Error in the server", message: 'You need to set champNameToFillWithTokenId' });
             return;
         }
         createFunctionId(req, res, config);
