@@ -30,8 +30,8 @@ export const deleteRouteAdmin = (app: Application, config: CrudAdmin) => {
     });
 };
 
-export const deleteByIdInToken = (app: Application, config: CrudAdmin) => {
-    app.delete(`${config.route}token`, async (req: Request, res: Response) => {
-        deleteFunc(res,req,config,req.jwt.payload.id)
-    });
-};
+// export const deleteByIdInToken = (app: Application, config: CrudAdmin) => {
+//     app.delete(`${config.route}token`, async (req: Request, res: Response) => {
+//         deleteFunc(res,req,config,req.jwt.payload.id)
+//     });
+// };

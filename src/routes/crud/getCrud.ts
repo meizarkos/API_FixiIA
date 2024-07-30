@@ -71,7 +71,7 @@ export const getByIdInToken = (app: Application, config: CrudAdmin) => {
           const champAsPrimaryKey = config.champNameToFindById;
 
           const whereClause = {};
-          whereClause[champAsPrimaryKey] = req.jwt.payload.id;
+          whereClause[champAsPrimaryKey] = req.jwt.payload.id; //user_id : req.jwt.payload.id
 
           const item = await config.model.findAll({where:whereClause});
 

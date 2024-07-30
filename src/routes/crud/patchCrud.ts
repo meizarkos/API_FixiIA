@@ -50,8 +50,8 @@ export const patchRouteAdmin = (app: Application, config: CrudAdmin) => {
     });
 };
 
-export const patchByIdInToken = (app: Application, config: CrudAdmin) => {
-    app.patch(`${config.route}token`, async (req: Request, res: Response) => {
-        patch(res,req,config,req.jwt.payload.id)
-    });
-};
+// export const patchByIdInToken = (app: Application, config: CrudAdmin) => {
+//     app.patch(`${config.route}token`, async (req: Request, res: Response) => {
+//         patch(res,req,config,req.jwt.payload.id)
+//     });
+// };

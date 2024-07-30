@@ -6,8 +6,8 @@ import { errorHandler } from "./src/utils";
 import { keyToken } from "./src/utils/data";
 import * as routes from './src/routes';
 import * as cruds from './src/models/crud';
-import { patchRouteAdmin , patchByIdInToken } from './src/routes/crud';
-import { deleteRouteAdmin, deleteByIdInToken} from './src/routes/crud';
+import { patchRouteAdmin } from './src/routes/crud';
+import { deleteRouteAdmin} from './src/routes/crud';
 import { createRouteAdmin , createRouteId } from './src/routes/crud';
 import { getAllModelAdmin, getDetailModelAdmin, getByIdInToken } from './src/routes/crud';
 
@@ -28,9 +28,8 @@ Object.keys(routes).forEach((key) => {
 
 Object.keys(cruds).forEach((key) => {
   patchRouteAdmin(app, cruds[key]);
-  patchByIdInToken(app, cruds[key]);
+  //patchByIdInToken(app, cruds[key]);
   deleteRouteAdmin(app, cruds[key]);
-  deleteByIdInToken(app, cruds[key]);
   createRouteAdmin(app, cruds[key]);
   createRouteId(app, cruds[key]);
   getAllModelAdmin(app, cruds[key]);
