@@ -1,13 +1,9 @@
 export function getStartAndEndOfMonth(){
   const now = new Date();
-  const startOfMonth = new Date(now.getFullYear(), now.getMonth(),now.getDate(),11);
-  const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1,now.getDate(),11);
+  const startOfYear = new Date(now.getFullYear(), now.getMonth(),now.getDate(),11);
+  const endOfYear = new Date(now.getFullYear()+1, now.getMonth(),now.getDate(),11);
 
-  const parseStart = parseDate(startOfMonth);
-  const parseEnd = parseDate(endOfMonth);
-
-  //return { parseStart, parseEnd };
-  return { startOfMonth, endOfMonth };
+  return { startOfYear, endOfYear };
 };
 
 export function parseDate(date: Date): String {

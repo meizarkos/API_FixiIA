@@ -7,13 +7,13 @@ export const getMonthToComeAllAvailable = (app: Application) => {
   app.get('/monthAvailable', async (req: Request, res: Response) => {
     try {
       const tokenId = req.jwt.payload.id;
-      const {startOfMonth, endOfMonth} = getStartAndEndOfMonth();
+      const {startOfYear, endOfYear} = getStartAndEndOfMonth();
 
       const allAvailableInMonth = await AvailableDate.findAll({
         where: {
           company_id: tokenId,
           available_date: {
-            [Op.between]: [startOfMonth, endOfMonth]
+            [Op.between]: [startOfYear, endOfYear]
           }
         }
       });
