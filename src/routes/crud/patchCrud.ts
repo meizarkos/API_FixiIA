@@ -2,7 +2,6 @@ import { Application, Request, Response } from 'express';
 import { CrudAdmin } from '../../models/crud';
 import { getAllErrors } from '../../utils';
 import { ValidationError, UniqueConstraintError, Identifier } from 'sequelize';
-import jwt from 'jwt-express'
 
 async function patch(res:Response,req:Request,config:CrudAdmin,id:Identifier){
     try {
