@@ -29,3 +29,10 @@ export const companyCrud: CrudAdmin = {
   noReturn: ['password'],
   post: false,
 };
+
+export const availableDateCrud: CrudAdmin = {
+  model: models.AvailableDate,
+  route: '/available_dates',
+  forbidden: ['uuid'],
+  post: false,
+}

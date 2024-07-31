@@ -46,6 +46,17 @@ export const companyModelError = {
   }
 }
 
+export const availableModelError = {
+  date_available: {
+    notEmpty: "A date is required",
+    notNull: "A date is required"
+  },
+  status :{
+    notEmpty : "A status is required",
+    notNull : "A status is required"
+  }
+}
+
 export const loginError = {
   wrong_credentials: "Vos identifiants sont incorrects",
 }
