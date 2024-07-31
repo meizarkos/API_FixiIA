@@ -21,3 +21,11 @@ export const userCrud: CrudAdmin = {
   noReturn: ['password'],
   post: false,
 };
+
+export const companyCrud: CrudAdmin = {
+  model: models.Company,
+  route: '/companies',
+  forbidden: ['uuid'],
+  noReturn: ['password'],
+  post: false,
+};

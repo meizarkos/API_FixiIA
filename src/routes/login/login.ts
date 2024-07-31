@@ -1,4 +1,4 @@
-import { User } from '../../models';
+import { Company, User } from '../../models';
 import { Application, Request, Response } from 'express';
 import { Model, ModelStatic } from 'sequelize';
 import bcrypt from 'bcrypt';
@@ -34,5 +34,11 @@ async function login(req:Request,res:Response,model :ModelStatic<Model<any, any>
 export const loginUser = (app: Application) => {
   app.post('/loginUser', async (req: Request, res: Response) => {
       login(req,res,User)
+  });
+};
+
+export const loginCompany = (app: Application) => {
+  app.post('/loginCompany', async (req: Request, res: Response) => {
+      login(req,res,Company)
   });
 };

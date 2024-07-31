@@ -1,4 +1,4 @@
-import { User } from '../../models';
+import { User,Company } from '../../models';
 import { Application, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { ValidationError,UniqueConstraintError} from 'sequelize';
@@ -39,5 +39,11 @@ async function register(req:Request,res:Response,model :ModelStatic<Model<any, a
 export const registerUser = (app: Application) => {
   app.post('/registerUser', async (req: Request, res: Response) => {
       register(req,res,User)
+  });
+};
+
+export const registerCompany = (app: Application) => {
+  app.post('/registerCompany', async (req: Request, res: Response) => {
+      register(req,res,Company)
   });
 };

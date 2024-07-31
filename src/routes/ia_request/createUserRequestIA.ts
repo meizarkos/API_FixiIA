@@ -1,6 +1,7 @@
 import { Application, Request, Response } from 'express';
 import { generateTextIA, modelIA } from './urlIA';
 import { IAKey } from '../../utils/data';
+import { errorOccured } from '../../messages';
 
 
 export const createUserRequestIA = (app: Application) => {
@@ -25,7 +26,7 @@ export const createUserRequestIA = (app: Application) => {
       
       const data = await answer.json();
       if(!data){
-        return res.status(400).json({ message: 'Bad request' });
+        return res.status(400).json({ message: errorOccured.error_occured });
       }
       else{
         return res.status(200).json(data);
@@ -33,7 +34,7 @@ export const createUserRequestIA = (app: Application) => {
     } 
     catch (e) {
       console.log(e);
-      return res.status(500).json({ message: 'Internal server error' });
+      return res.status(500).json({ message: errorOccured.error_occured });
     }
   });
 };
