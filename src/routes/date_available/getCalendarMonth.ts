@@ -15,7 +15,8 @@ export const getMonthToComeAllAvailable = (app: Application) => {
           available_date: {
             [Op.between]: [startOfYear, endOfYear]
           }
-        }
+        },
+        attributes: { exclude: ['company_id'] }
       });
 
       res.status(200).json(allAvailableInMonth);
