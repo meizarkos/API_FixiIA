@@ -15,7 +15,7 @@ export const postAvailable = (app: Application) => {
       req.body.available_date = dateTime;
       const available = await AvailableDate.create(req.body);
 
-      available['company_id'] = '';
+      available['company_id'] = null;
       
       res.status(200).json({ message: 'New item created in available_date', item: available });
     } 
