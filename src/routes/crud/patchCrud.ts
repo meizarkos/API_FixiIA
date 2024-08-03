@@ -3,7 +3,7 @@ import { CrudAdmin } from '../../models/crud';
 import { getAllErrors } from '../../utils';
 import { ValidationError, UniqueConstraintError, Identifier } from 'sequelize';
 
-async function patchAdmin(res:Response,req:Request,config:CrudAdmin,id:Identifier){
+async function patchAdmin(res: Response, req: Request, config: CrudAdmin, id: Identifier) {
     try {
         const authorizedAttributes = Object.keys(config.model.getAttributes()).filter(
             (attr) => !config.forbidden.includes(attr)
@@ -23,9 +23,9 @@ async function patchAdmin(res:Response,req:Request,config:CrudAdmin,id:Identifie
             res.status(404).json({ message: `Item not found in ${config.route}` });
             return;
         }
+
         await config.model.update(req.body, { where: { uuid: id } });
         res.status(200).json({ message: `Item updated in ${config.route}` });
-
     } catch (e: unknown) {
         const attributes = Object.keys(config.model.getAttributes());
 
@@ -35,16 +35,20 @@ async function patchAdmin(res:Response,req:Request,config:CrudAdmin,id:Identifie
         }
 
         console.error(e);
-        res.status(500).json({ error: "Error server", message: 'Error updating item.' });
+        res.status(500).json({ error: 'Error server', message: 'Error updating item.' });
     }
 }
 
 export const patchCrudAdmin = (app: Application, config: CrudAdmin) => {
     app.patch(`${config.route}/:uuid`, async (req: Request, res: Response) => {
-        if(config.patch !== undefined && config.patch === false){
-            res.status(500).json({ error: "Error in the server", message: 'You aren t suppose to use this model like this' });
+        if (config.patch !== undefined && config.patch === false) {
+            res.status(500).json({
+                error: 'Error in the server',
+                message: 'You aren t suppose to use this model like this'
+            });
             return;
         }
-        patchAdmin(res,req,config,req.params.uuid)
+
+        patchAdmin(res, req, config, req.params.uuid);
     });
 };

@@ -16,45 +16,45 @@ export const EstimateModel = (sequelize: Sequelize) => {
             type: DataTypes.UUID,
             allowNull: false,
             references: {
-              model: User,
-              key: 'uuid'
-            },
+                model: User,
+                key: 'uuid'
+            }
         },
         company_id: {
             type: DataTypes.UUID,
             allowNull: false,
             references: {
-              model: Company,
-              key: 'uuid'
-            },
+                model: Company,
+                key: 'uuid'
+            }
         },
         request_id: {
             type: DataTypes.UUID,
             allowNull: false,
             references: {
-              model: Request,
-              key: 'uuid'
-            },
+                model: Request,
+                key: 'uuid'
+            }
         },
         description: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          validate: {
-              len: {
-                args: [0, 1280],
-                msg: estimateModelError.description.len
-              },
-              notEmpty: { msg: estimateModelError.description.notEmpty },
-              notNull: { msg: estimateModelError.description.notNull },
-          }
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: {
+                    args: [0, 1280],
+                    msg: estimateModelError.description.len
+                },
+                notEmpty: { msg: estimateModelError.description.notEmpty },
+                notNull: { msg: estimateModelError.description.notNull }
+            }
         },
-        price:{
+        price: {
             type: DataTypes.FLOAT,
             allowNull: false,
             validate: {
                 notPositive: { msg: estimateModelError.price.notPositive },
                 notEmpty: { msg: estimateModelError.price.notEmpty },
-                notNull: { msg: estimateModelError.price.notNull },
+                notNull: { msg: estimateModelError.price.notNull }
             }
         },
         intervention_date_start: {
@@ -62,33 +62,33 @@ export const EstimateModel = (sequelize: Sequelize) => {
             allowNull: false,
             validate: {
                 notEmpty: { msg: estimateModelError.intervention_date_start.notEmpty },
-                notNull: { msg: estimateModelError.intervention_date_start.notNull },
+                notNull: { msg: estimateModelError.intervention_date_start.notNull }
             }
         },
         intervention_date_end: {
             type: DataTypes.DATE,
-            allowNull: true,
+            allowNull: true
         },
-        commentary :{
+        commentary: {
             type: DataTypes.STRING,
-            validate : {
-              len: {
-                args: [0, 1280],
-                msg: estimateModelError.commentary.len
-              },
+            validate: {
+                len: {
+                    args: [0, 1280],
+                    msg: estimateModelError.commentary.len
+                }
             },
             allowNull: true
         },
-        status:{
+        status: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: {
-                  args: [0, 128],
-                  msg: estimateModelError.status.len
+                    args: [0, 128],
+                    msg: estimateModelError.status.len
                 },
                 notEmpty: { msg: estimateModelError.status.notEmpty },
-                notNull: { msg: estimateModelError.status.notNull },
+                notNull: { msg: estimateModelError.status.notNull }
             },
             defaultValue: estimateModelError.status.pending
         }

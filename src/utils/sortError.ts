@@ -2,7 +2,7 @@ import { Response } from 'express';
 import { UniqueConstraintError, ValidationError } from 'sequelize';
 
 export function getAllErrors(e: ValidationError | UniqueConstraintError, res: Response, tables: string[]): void {
-    const jsonResult:any = {};
+    const jsonResult = {};
     tables.map((table) => {
         const error = e.errors.find((err) => err.path === table);
 
@@ -10,9 +10,7 @@ export function getAllErrors(e: ValidationError | UniqueConstraintError, res: Re
             jsonResult[table] = error.message;
         }
     });
-    res.status(400).json(
-        jsonResult
-    );
+    res.status(400).json(jsonResult);
 }
 
 export function findPath(e: ValidationError | UniqueConstraintError, tables: string[]): boolean {

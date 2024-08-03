@@ -18,7 +18,7 @@ export const CompanyModel = (sequelize: Sequelize) => {
             },
             validate: {
                 notEmpty: { msg: companyModelError.email.notEmpty },
-                notNull: { msg: companyModelError.email.notNull},
+                notNull: { msg: companyModelError.email.notNull },
                 len: {
                     args: [0, 128], // Minimum and maximum length
                     msg: companyModelError.email.len
@@ -46,7 +46,7 @@ export const CompanyModel = (sequelize: Sequelize) => {
                 }
             }
         },
-        location : {
+        location: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -60,8 +60,8 @@ export const CompanyModel = (sequelize: Sequelize) => {
         },
         phone: {
             type: DataTypes.STRING,
-            allowNull: true,
-        },
+            allowNull: true
+        }
     });
 };
 

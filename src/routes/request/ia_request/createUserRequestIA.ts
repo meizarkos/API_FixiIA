@@ -3,38 +3,36 @@ import { generateTextIA, modelIA } from './urlIA';
 import { IAKey } from '../../../utils/data';
 import { errorOccured } from '../../../messages';
 
-
 export const createUserRequestIA = (app: Application) => {
-  app.post("/specificationWorker", async (req: Request, res: Response) => {
-    try{
-      const answer = await fetch(generateTextIA, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${IAKey}`
-        },
-        body: JSON.stringify({
-          model: modelIA,
-          messages: [
-            {
-              role: "user",
-              content: req.body.message
+    app.post('/specificationWorker', async (req: Request, res: Response) => {
+        try {
+            const answer = await fetch(generateTextIA, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${IAKey}`
+                },
+                body: JSON.stringify({
+                    model: modelIA,
+                    messages: [
+                        {
+                            role: 'user',
+                            content: req.body.message
+                        }
+                    ]
+                })
+            });
+
+            const data = await answer.json();
+
+            if (!data) {
+                return res.status(400).json({ message: errorOccured.error_occured });
+            } else {
+                return res.status(200).json(data);
             }
-          ]
-        })
-      })
-      
-      const data = await answer.json();
-      if(!data){
-        return res.status(400).json({ message: errorOccured.error_occured });
-      }
-      else{
-        return res.status(200).json(data);
-      }
-    } 
-    catch (e) {
-      console.log(e);
-      return res.status(500).json({ message: errorOccured.error_occured });
-    }
-  });
+        } catch (e) {
+            console.log(e);
+            return res.status(500).json({ message: errorOccured.error_occured });
+        }
+    });
 };

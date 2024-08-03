@@ -18,7 +18,7 @@ export const UserModel = (sequelize: Sequelize) => {
             },
             validate: {
                 notEmpty: { msg: userModelError.email.notEmpty },
-                notNull: { msg: userModelError.email.notNull},
+                notNull: { msg: userModelError.email.notNull },
                 len: {
                     args: [0, 128], // Minimum and maximum length
                     msg: userModelError.email.len
@@ -60,8 +60,8 @@ export const UserModel = (sequelize: Sequelize) => {
         },
         phone: {
             type: DataTypes.STRING,
-            allowNull: true,
-        },
+            allowNull: true
+        }
     });
 };
 

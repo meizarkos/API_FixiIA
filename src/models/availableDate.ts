@@ -14,25 +14,25 @@ export const AvailableDateModel = (sequelize: Sequelize) => {
             type: DataTypes.UUID,
             allowNull: false,
             references: {
-              model: Company,
-              key: 'uuid'
-            },
+                model: Company,
+                key: 'uuid'
+            }
         },
         available_date: {
             type: DataTypes.DATE,
             allowNull: false,
             validate: {
                 notEmpty: { msg: availableModelError.date_available.notEmpty },
-                notNull: { msg: availableModelError.date_available.notNull },
+                notNull: { msg: availableModelError.date_available.notNull }
             }
         },
-        status:{
+        status: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: { msg: availableModelError.status.notEmpty },
-                notNull: { msg: availableModelError.status.notNull },
-            },
+                notNull: { msg: availableModelError.status.notNull }
+            }
         }
     });
 };
