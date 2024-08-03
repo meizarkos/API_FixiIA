@@ -48,5 +48,6 @@ export const estimateCrud: CrudAdmin = {
   model: models.Estimate,
   route: '/estimates',
   forbidden: ['uuid'],
-  champNameToFindById: 'company_id'
+  champNameToFindById: 'company_id',
+  champNameToFillWithTokenId: 'company_id',
 }
