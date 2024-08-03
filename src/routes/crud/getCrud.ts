@@ -110,6 +110,7 @@ export const getCrudByIdInToken = (app: Application, config: CrudAdmin) => {
 
           res.status(200).json({ message: `Item found in ${config.route}`, item });
       } catch (e: unknown) {
+          console.log(e);
           res.status(500).json({
               error: 'Internal Server Error',
               message: `Error fetching item from ${config.route}`
