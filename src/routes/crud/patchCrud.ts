@@ -3,7 +3,7 @@ import { CrudAdmin } from '../../models/crud';
 import { getAllErrors } from '../../utils';
 import { ValidationError, UniqueConstraintError, Identifier } from 'sequelize';
 
-async function patch(res:Response,req:Request,config:CrudAdmin,id:Identifier){
+async function patchAdmin(res:Response,req:Request,config:CrudAdmin,id:Identifier){
     try {
         const authorizedAttributes = Object.keys(config.model.getAttributes()).filter(
             (attr) => !config.forbidden.includes(attr)
@@ -45,16 +45,6 @@ export const patchCrudAdmin = (app: Application, config: CrudAdmin) => {
             res.status(500).json({ error: "Error in the server", message: 'You aren t suppose to use this model like this' });
             return;
         }
-        patch(res,req,config,req.params.uuid)
-    });
-};
-
-export const patchCrudUser = (app: Application, config: CrudAdmin) => {
-    app.patch(`${config.route}_user/:uuid`, async (req: Request, res: Response) => {
-        if(config.patch !== undefined && config.patch === false){
-            res.status(500).json({ error: "Error in the server", message: 'You aren t suppose to use this model like this' });
-            return;
-        }
-        patch(res,req,config,req.jwt.payload.id)
+        patchAdmin(res,req,config,req.params.uuid)
     });
 };

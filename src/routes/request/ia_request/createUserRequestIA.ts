@@ -1,7 +1,7 @@
 import { Application, Request, Response } from 'express';
 import { generateTextIA, modelIA } from './urlIA';
-import { IAKey } from '../../utils/data';
-import { errorOccured } from '../../messages';
+import { IAKey } from '../../../utils/data';
+import { errorOccured } from '../../../messages';
 
 
 export const createUserRequestIA = (app: Application) => {

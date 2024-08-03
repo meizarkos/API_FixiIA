@@ -6,10 +6,10 @@ import { errorHandler } from "./src/utils";
 import { keyToken } from "./src/utils/data";
 import * as routes from './src/routes';
 import * as cruds from './src/models/crud';
-import { patchCrudAdmin,patchCrudUser } from './src/routes/crud';
-import { deleteCrudAdmin, deleteCrudUser} from './src/routes/crud';
-import { createCrudAdmin , createCrudById,createCrudUser } from './src/routes/crud';
-import { getCrudAllModelAdmin, getCrudDetailModelAdmin,getCrudAllModelUser,getCrudDetailModelUser, getCrudByIdInToken } from './src/routes/crud';
+import { patchCrudAdmin} from './src/routes/crud';
+import { deleteCrudAdmin} from './src/routes/crud';
+import { createCrudAdmin} from './src/routes/crud';
+import { getCrudAllModelAdmin, getCrudDetailModelAdmin} from './src/routes/crud';
 
 startOfDatabase();
 
@@ -28,17 +28,10 @@ Object.keys(routes).forEach((key) => {
 
 Object.keys(cruds).forEach((key) => {
   patchCrudAdmin(app, cruds[key]);
-  patchCrudUser(app, cruds[key]);
   deleteCrudAdmin(app, cruds[key]);
-  deleteCrudUser(app, cruds[key]);
   createCrudAdmin(app, cruds[key]);
-  createCrudUser(app, cruds[key]);
-  createCrudById(app, cruds[key]);
   getCrudAllModelAdmin(app, cruds[key]);
   getCrudDetailModelAdmin(app, cruds[key]);
-  getCrudAllModelUser(app, cruds[key]);
-  getCrudDetailModelUser(app, cruds[key]);
-  getCrudByIdInToken(app, cruds[key]);
 });
 
 app.get("/", (_req, res) => {
