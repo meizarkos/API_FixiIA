@@ -53,14 +53,14 @@ export const getDetailModelAdmin = (app: Application, config: CrudAdmin) => {
 };
 
 export const getByIdInToken = (app: Application, config: CrudAdmin) => {
-  app.get(`${config.route}token`, async (req: Request, res: Response) => {
+  app.get(`${config.route}_token`, async (req: Request, res: Response) => {
       try {
           if(!req.jwt.payload){
               res.status(401).json({ message: `Token not found in ${config.route}token` });
               return;
           }
 
-          if(config.champNameToFindById == null){
+          if(config.champNameToFindById == null || config.champNameToFindById == undefined){
               res.status(500).json({
                   error: 'Internal Server Error',
                   message: `You forgot to modify the model to add champNameToFindById`

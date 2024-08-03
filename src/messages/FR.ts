@@ -57,6 +57,61 @@ export const availableModelError = {
   }
 }
 
+export const requestModelError = {
+  category: {
+    notEmpty: "A category is required",
+    notNull: "A category is required",
+    len : "Category must be less than 128 characters"
+  },
+  description: {
+    notEmpty: "A description is required",
+    notNull: "A description is required",
+    len : "Description must be less than 1280 characters"
+  },
+  intervention_date: {
+    notEmpty: "A date is required",
+    notNull: "A date is required"
+  },
+  status : {
+    notEmpty: "A status is required",
+    notNull: "A status is required",
+    pending : "Pending",
+    len : "Status must be less than 128 characters"
+  }
+}
+
+export const estimateModelError = {
+  description:{
+    notEmpty: "A description is required",
+    notNull: "A description is required",
+    len : "Description must be less than 1280 characters"
+  },
+  price: {
+    notEmpty: "A price is required",
+    notNull: "A price is required",
+    notPositive: "Price must be positive and not 0"
+  },
+  intervention_date_start: {
+    notEmpty: "A date is required",
+    notNull: "A date is required"
+  },
+  intervention_date_end: {
+    notEmpty: "A date is required",
+    notNull: "A date is required"
+  },
+  commentary : {
+    notEmpty: "A commentary is required",
+    notNull: "A commentary is required",
+    len : "Commentary must be less than 1280 characters"
+  },
+  status : {
+    notEmpty: "A status is required",
+    notNull: "A status is required",
+    pending : "Pending",
+    len : "Status must be less than 128 characters"
+  }
+}
+
 export const loginError = {
   wrong_credentials: "Vos identifiants sont incorrects",
 }

@@ -1,7 +1,6 @@
 import { Application, Request, Response } from 'express';
 import { CrudAdmin } from '../../models/crud';
 import { Identifier } from 'sequelize';
-import jwt from 'jwt-express'
 
 async function deleteFunc(res:Response,req:Request,config:CrudAdmin,id:Identifier){
     try {
@@ -30,8 +29,12 @@ export const deleteRouteAdmin = (app: Application, config: CrudAdmin) => {
     });
 };
 
-// export const deleteByIdInToken = (app: Application, config: CrudAdmin) => {
-//     app.delete(`${config.route}token`, async (req: Request, res: Response) => {
-//         deleteFunc(res,req,config,req.jwt.payload.id)
-//     });
-// };
+export const deleteRouteUser = (app: Application, config: CrudAdmin) => {
+    app.delete(`${config.route}_user/:uuid`, async (req: Request, res: Response) => {
+        if(config.delete !== undefined && config.delete === false){
+            res.status(500).json({ error: "Error in the server", message: 'You aren t suppose to use this model like this' });
+            return;
+        }
+        deleteFunc(res,req,config,req.params.uuid)
+    });
+};

@@ -36,3 +36,17 @@ export const availableDateCrud: CrudAdmin = {
   forbidden: ['uuid'],
   post: false,
 }
+
+export const requestCrud: CrudAdmin = {
+  model: models.Request,
+  route: '/requests',
+  forbidden: ['uuid'],
+  post: false,
+}
+
+export const estimateCrud: CrudAdmin = {
+  model: models.Estimate,
+  route: '/estimates',
+  forbidden: ['uuid'],
+  champNameToFindById: 'company_id'
+}
