@@ -83,7 +83,7 @@ export const getCrudDetailModelUser = (app: Application, config: CrudAdmin) => {
 export const getCrudByIdInToken = (app: Application, config: CrudAdmin) => {
   app.get(`${config.route}_token`, async (req: Request, res: Response) => {
       try {
-          if(!req.jwt.payload){
+          if(!req.jwt.payload.id){
               res.status(401).json({ message: `Token not found in ${config.route}token` });
               return;
           }
