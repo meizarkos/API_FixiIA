@@ -2,12 +2,12 @@
   "name": "api_fixiia",
   "version": "1.0.0",
   "description": "API FOR FIXIIA",
-  "main": "main.ts",
+  "main": "./src/main.ts",
   "scripts": {
     "dev": "nodemon --watch .",
-    "start": "tsc --outDir dist && node dist/main.js",
-    "build": "tsc --outDir dist",
-    "lint": "npx eslint ./src --fix"
+    "lint": "npx eslint ./src --fix",
+    "build": "webpack",
+    "start": "node ./dist/api.js"
   },
   "author": "",
   "license": "ISC",
@@ -26,7 +26,11 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "nodemon": "^3.1.0",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.2",
+    "ts-loader": "^9.5.1",
+    "dotenv-webpack": "^8.0.1",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

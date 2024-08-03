@@ -1,15 +1,15 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import jwt from 'jwt-express';
-import { startOfDatabase } from './src/utils';
-import { errorHandler } from './src/utils';
-import { keyToken } from './src/utils/data';
-import * as routes from './src/routes';
-import * as cruds from './src/models/crud';
-import { patchCrudAdmin } from './src/routes/crud';
-import { deleteCrudAdmin } from './src/routes/crud';
-import { createCrudAdmin } from './src/routes/crud';
-import { getCrudAllModelAdmin, getCrudDetailModelAdmin } from './src/routes/crud';
+import { startOfDatabase } from './utils';
+import { errorHandler } from './utils';
+import { keyToken } from './utils/data';
+import * as routes from './routes';
+import * as cruds from './models/crud';
+import { patchCrudAdmin } from './routes/crud';
+import { deleteCrudAdmin } from './routes/crud';
+import { createCrudAdmin } from './routes/crud';
+import { getCrudAllModelAdmin, getCrudDetailModelAdmin } from './routes/crud';
 
 startOfDatabase();
 
