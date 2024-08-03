@@ -42,6 +42,8 @@ export const requestCrud: CrudAdmin = {
   route: '/requests',
   forbidden: ['uuid'],
   //post: false,
+  champNameToFindById: 'user_id',
+  champNameToFillWithTokenId: 'user_id',
 }
 
 export const estimateCrud: CrudAdmin = {
