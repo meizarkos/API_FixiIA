@@ -41,7 +41,7 @@ export const requestCrud: CrudAdmin = {
   model: models.Request,
   route: '/requests',
   forbidden: ['uuid'],
-  post: false,
+  //post: false,
 }
 
 export const estimateCrud: CrudAdmin = {
