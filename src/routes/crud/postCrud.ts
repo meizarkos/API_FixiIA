@@ -23,6 +23,7 @@ async function createFunctionId(req: Request, res: Response, config: CrudAdmin) 
         }
 
         const newItem = await config.model.create(req.body);
+        newItem[config.champNameToFillWithTokenId] = undefined;
         res.status(201).json({ message: `New item created in ${config.route}`, item: newItem });
         
     } catch (e: unknown) {
