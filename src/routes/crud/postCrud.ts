@@ -70,7 +70,7 @@ async function createFunction(req: Request, res: Response, config: CrudAdmin) {
     }
 }
 
-export const createRouteAdmin = (app: Application, config: CrudAdmin) => {
+export const createCrudAdmin = (app: Application, config: CrudAdmin) => {
     app.post(config.route, async (req: Request, res: Response) => {
         if(config.post !== undefined && config.post === false){
             res.status(500).json({ error: "Error in the server", message: 'You aren t suppose to use this model like this' });
@@ -80,7 +80,7 @@ export const createRouteAdmin = (app: Application, config: CrudAdmin) => {
     });
 };
 
-export const createRouteUser = (app: Application, config: CrudAdmin) => {
+export const createCrudUser = (app: Application, config: CrudAdmin) => {
     app.post(config.route+'_user', async (req: Request, res: Response) => {
         if(config.post !== undefined && config.post === false){
             res.status(500).json({ error: "Error in the server", message: 'You aren t suppose to use this model like this' });
@@ -90,7 +90,7 @@ export const createRouteUser = (app: Application, config: CrudAdmin) => {
     });
 };
 
-export const createRouteId = (app: Application, config: CrudAdmin) => {
+export const createCrudById = (app: Application, config: CrudAdmin) => {
     app.post(config.route+'_id', async (req: Request, res: Response) => {
         if(config.champNameToFillWithTokenId === undefined){
             res.status(500).json({ error: "Error in the server", message: 'You need to set champNameToFillWithTokenId' });

@@ -19,7 +19,7 @@ async function deleteFunc(res:Response,req:Request,config:CrudAdmin,id:Identifie
     }
 }
 
-export const deleteRouteAdmin = (app: Application, config: CrudAdmin) => {
+export const deleteCrudAdmin = (app: Application, config: CrudAdmin) => {
     app.delete(`${config.route}/:uuid`, async (req: Request, res: Response) => {
         if(config.delete !== undefined && config.delete === false){
             res.status(500).json({ error: "Error in the server", message: 'You aren t suppose to use this model like this' });
@@ -29,7 +29,7 @@ export const deleteRouteAdmin = (app: Application, config: CrudAdmin) => {
     });
 };
 
-export const deleteRouteUser = (app: Application, config: CrudAdmin) => {
+export const deleteCrudUser = (app: Application, config: CrudAdmin) => {
     app.delete(`${config.route}_user/:uuid`, async (req: Request, res: Response) => {
         if(config.delete !== undefined && config.delete === false){
             res.status(500).json({ error: "Error in the server", message: 'You aren t suppose to use this model like this' });

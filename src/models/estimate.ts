@@ -68,10 +68,6 @@ export const EstimateModel = (sequelize: Sequelize) => {
         intervention_date_end: {
             type: DataTypes.DATE,
             allowNull: true,
-            validate: {
-                notEmpty: { msg: estimateModelError.intervention_date_end.notEmpty },
-                notNull: { msg: estimateModelError.intervention_date_end.notNull },
-            }
         },
         commentary :{
             type: DataTypes.STRING,
@@ -80,8 +76,6 @@ export const EstimateModel = (sequelize: Sequelize) => {
                 args: [0, 1280],
                 msg: estimateModelError.commentary.len
               },
-              notEmpty: { msg: estimateModelError.commentary.notEmpty },
-              notNull: { msg: estimateModelError.commentary.notNull },
             },
             allowNull: true
         },

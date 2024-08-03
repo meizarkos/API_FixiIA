@@ -39,7 +39,7 @@ async function patch(res:Response,req:Request,config:CrudAdmin,id:Identifier){
     }
 }
 
-export const patchByAdmin = (app: Application, config: CrudAdmin) => {
+export const patchCrudAdmin = (app: Application, config: CrudAdmin) => {
     app.patch(`${config.route}/:uuid`, async (req: Request, res: Response) => {
         if(config.patch !== undefined && config.patch === false){
             res.status(500).json({ error: "Error in the server", message: 'You aren t suppose to use this model like this' });
@@ -49,7 +49,7 @@ export const patchByAdmin = (app: Application, config: CrudAdmin) => {
     });
 };
 
-export const patchByUser = (app: Application, config: CrudAdmin) => {
+export const patchCrudUser = (app: Application, config: CrudAdmin) => {
     app.patch(`${config.route}_user/:uuid`, async (req: Request, res: Response) => {
         if(config.patch !== undefined && config.patch === false){
             res.status(500).json({ error: "Error in the server", message: 'You aren t suppose to use this model like this' });
