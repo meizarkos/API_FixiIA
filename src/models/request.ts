@@ -36,10 +36,10 @@ export const RequestModel = (sequelize: Sequelize) => {
             validate: {
                 len: {
                     args: [0, 128],
-                    msg: requestModelError.description.len
+                    msg: requestModelError.title.len
                 },
-                notEmpty: { msg: requestModelError.description.notEmpty },
-                notNull: { msg: requestModelError.description.notNull }
+                notEmpty: { msg: requestModelError.title.notEmpty },
+                notNull: { msg: requestModelError.title.notNull }
             }
         },
         description: {
