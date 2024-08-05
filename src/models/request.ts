@@ -30,6 +30,18 @@ export const RequestModel = (sequelize: Sequelize) => {
                 notNull: { msg: requestModelError.category.notNull }
             }
         },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: {
+                    args: [0, 128],
+                    msg: requestModelError.description.len
+                },
+                notEmpty: { msg: requestModelError.description.notEmpty },
+                notNull: { msg: requestModelError.description.notNull }
+            }
+        },
         description: {
             type: DataTypes.TEXT,
             allowNull: false,

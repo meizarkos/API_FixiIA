@@ -63,6 +63,11 @@ export const requestModelError = {
         notNull: 'A category is required',
         len: 'Category must be less than 128 characters'
     },
+    title : {
+        notEmpty : 'A title is required',
+        notNull : 'A title is required',
+        len : 'Title must be less than 128 characters'
+    },
     description: {
         notEmpty: 'A description is required',
         notNull: 'A description is required',
