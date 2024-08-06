@@ -75,7 +75,7 @@ export const RequestModel = (sequelize: Sequelize) => {
             },
             defaultValue: requestModelError.status.pending
         },
-        numberOfEstimate :{
+        number_of_estimate :{
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 0

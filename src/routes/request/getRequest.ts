@@ -8,7 +8,7 @@ export const getRequestByNewer = (app: Application) => {
     app.get(`${requestCrud.route}_token`, async (req: Request, res: Response) => {
         const item = await getCrudByIdInToken(res, req, requestCrud);
         const classNewer = classByNewer(item);
-        const resTotal = await Promise.all(classNewer.map(async (classNewer) => {
+        await Promise.all(classNewer.map(async (classNewer) => {
            if(classNewer.getDataValue('numberOfEstimate') === 0){
                 if(isDateInThePast(classNewer.getDataValue('intervention_date'))){
                     classNewer.setDataValue('status', 'Outdated');
