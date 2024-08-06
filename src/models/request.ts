@@ -74,6 +74,11 @@ export const RequestModel = (sequelize: Sequelize) => {
                 notNull: { msg: requestModelError.status.notNull }
             },
             defaultValue: requestModelError.status.pending
+        },
+        numberOfEstimate :{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0
         }
     });
 };

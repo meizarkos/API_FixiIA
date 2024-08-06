@@ -26,3 +26,10 @@ export function parseDate(date: Date): string {
     const res = date.getFullYear() + '-' + monthParse + '-' + dayParse;
     return res;
 }
+
+
+export function isDateInThePast(dateString:string): boolean {
+    const targetDate = new Date(dateString);
+    const currentDate = new Date();
+    return targetDate < currentDate;
+}
