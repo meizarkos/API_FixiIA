@@ -11,8 +11,8 @@ export const getRequestByNewer = (app: Application) => {
         const resTotal = await Promise.all(classNewer.map(async (classNewer) => {
            if(classNewer.getDataValue('numberOfEstimate') === 0){
                 if(isDateInThePast(classNewer.getDataValue('intervention_date'))){
-                    classNewer.setDataValue('status', 'outdated');
-                    RequestModel.update({status: 'outdated'}, {where: {uuid: classNewer.getDataValue('uuid')}});
+                    classNewer.setDataValue('status', 'Outdated');
+                    RequestModel.update({status: 'Outdated'}, {where: {uuid: classNewer.getDataValue('uuid')}});
                 }
            }
            return classNewer;
