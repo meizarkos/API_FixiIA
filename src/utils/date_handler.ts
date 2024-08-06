@@ -30,7 +30,7 @@ export function parseDate(date: Date): string {
 
 export function isDateInThePast(dateString:string): boolean {
     const targetDate = new Date(dateString);
-    const targetDateWithoutTime = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate()-1);
+    const targetDateWithoutTime = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
     const currentDate = new Date();
     return targetDateWithoutTime < currentDate;
 }
