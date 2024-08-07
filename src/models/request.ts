@@ -79,6 +79,18 @@ export const RequestModel = (sequelize: Sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 0
+        },
+        adress :{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: {
+                    args: [0, 256],
+                    msg: requestModelError.adress.len
+                },
+                notEmpty: { msg: requestModelError.adress.notEmpty },
+                notNull: { msg: requestModelError.adress.notNull }
+            }
         }
     });
 };

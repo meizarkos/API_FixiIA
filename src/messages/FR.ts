@@ -43,6 +43,11 @@ export const companyModelError = {
         notEmpty: 'A location is required',
         notNull: 'A location is required',
         len: 'Location text must be less than 128 characters'
+    },
+    adress : {
+        notEmpty: 'An adress is required',
+        notNull: 'An adress is required',
+        len: 'Adress must be less than 256 characters'
     }
 };
 
@@ -82,6 +87,11 @@ export const requestModelError = {
         notNull: 'A status is required',
         pending: 'Pending',
         len: 'Status must be less than 128 characters'
+    },
+    adress : {
+        notEmpty: 'An adress is required',
+        notNull: 'An adress is required',
+        len: 'Adress must be less than 256 characters'
     }
 };
 

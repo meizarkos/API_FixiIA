@@ -61,6 +61,18 @@ export const CompanyModel = (sequelize: Sequelize) => {
         phone: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        adress :{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: {
+                    args: [0, 256],
+                    msg: companyModelError.adress.len
+                },
+                notEmpty: { msg: companyModelError.adress.notEmpty },
+                notNull: { msg: companyModelError.adress.notNull }
+            }
         }
     });
 };
