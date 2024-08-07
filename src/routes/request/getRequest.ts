@@ -9,7 +9,7 @@ export const getRequestByNewer = (app: Application) => {
         const item = await getCrudByIdInToken(res, req, requestCrud);
         const classNewer = classByNewer(item);
         await Promise.all(classNewer.map(async (classNewer) => {
-           if(classNewer.getDataValue('numberOfEstimate') === 0){
+           if(classNewer.getDataValue('number_of_estimate') === 0){
                 if(isDateInThePast(classNewer.getDataValue('intervention_date'))){
                     classNewer.setDataValue('status', 'Outdated');
                     RequestModel.update({status: 'Outdated'}, {where: {uuid: classNewer.getDataValue('uuid')}});
