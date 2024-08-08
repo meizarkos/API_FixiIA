@@ -9,13 +9,13 @@ export async function getCrudByIdInToken(res: Response, req: Request, config: Cr
             error: 'Error in the server',
             message: 'You aren t suppose to use this model like this'
         });
-        return;
+        return null;
     }
 
     try {
         if (!req.jwt.payload.id) {
             res.status(401).json({ message: `Token not found in ${config.route}token` });
-            return;
+            return null;
         }
 
         if (config.champNameToFindById == null || config.champNameToFindById == undefined) {
@@ -23,7 +23,7 @@ export async function getCrudByIdInToken(res: Response, req: Request, config: Cr
                 error: 'Internal Server Error',
                 message: `You forgot to modify the model to add champNameToFindById`
             });
-            return;
+            return null;
         }
 
         const champAsPrimaryKey = config.champNameToFindById;
@@ -35,15 +35,13 @@ export async function getCrudByIdInToken(res: Response, req: Request, config: Cr
 
         if (!item) {
             res.status(404).json({ message: `Item not found in ${config.route}` });
-            return;
+            return null;
         }
 
         return item;
     } catch (e: unknown) {
         console.log(e);
-        res.status(500).json({
-            error: 'Internal Server Error',
-            message: `Error fetching item from ${config.route}`
-        });
+        res.status(500).json({ error: 'Error in the server', message: 'Error getting item.' });
+        return null;
     }
 }

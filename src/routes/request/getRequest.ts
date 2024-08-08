@@ -7,6 +7,10 @@ import { classByNewer,isDateInThePast } from '../../utils';
 export const getRequestByNewer = (app: Application) => {
     app.get(`${requestCrud.route}_token`, async (req: Request, res: Response) => {
         const item = await getCrudByIdInToken(res, req, requestCrud);
+        if (item === null) {
+            return;
+        }
+        
         const classNewer = classByNewer(item);
         await Promise.all(classNewer.map(async (classNewer) => {
            if(classNewer.getDataValue('number_of_estimate') === 0){
