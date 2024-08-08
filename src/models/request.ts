@@ -2,6 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
 import { User } from './user';
 import { requestModelError } from '../messages';
+import { Adress } from './adress';
 
 export const RequestModel = (sequelize: Sequelize) => {
     return sequelize.define('request', {
@@ -81,15 +82,11 @@ export const RequestModel = (sequelize: Sequelize) => {
             defaultValue: 0
         },
         adress :{
-            type: DataTypes.STRING,
+            type: DataTypes.UUID,
             allowNull: false,
-            validate: {
-                len: {
-                    args: [0, 256],
-                    msg: requestModelError.adress.len
-                },
-                notEmpty: { msg: requestModelError.adress.notEmpty },
-                notNull: { msg: requestModelError.adress.notNull }
+            references: {
+                model: Adress,
+                key: 'uuid'
             }
         }
     });

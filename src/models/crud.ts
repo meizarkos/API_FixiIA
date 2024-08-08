@@ -54,3 +54,9 @@ export const estimateCrud: CrudAdmin = {
     champNameToFindById: 'company_id',
     champNameToFillWithTokenId: 'company_id'
 };
+
+export const adressCrud: CrudAdmin = {
+    model: models.Adress,
+    route: '/adresses',
+    forbidden: ['uuid'],
+};

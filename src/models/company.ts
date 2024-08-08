@@ -1,6 +1,7 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
 import { companyModelError } from '../messages';
+import { Adress } from './adress';
 
 export const CompanyModel = (sequelize: Sequelize) => {
     return sequelize.define('companie', {
@@ -63,15 +64,11 @@ export const CompanyModel = (sequelize: Sequelize) => {
             allowNull: true
         },
         adress :{
-            type: DataTypes.STRING,
+            type: DataTypes.UUID,
             allowNull: false,
-            validate: {
-                len: {
-                    args: [0, 256],
-                    msg: companyModelError.adress.len
-                },
-                notEmpty: { msg: companyModelError.adress.notEmpty },
-                notNull: { msg: companyModelError.adress.notNull }
+            references: {
+                model: Adress,
+                key: 'uuid'
             }
         }
     });

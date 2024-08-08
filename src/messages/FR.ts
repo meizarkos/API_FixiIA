@@ -127,6 +127,37 @@ export const estimateModelError = {
     }
 };
 
+export const adressModelError = {
+    country : {
+        notEmpty: 'A country is required',
+        notNull: 'A country is required',
+        len: 'Country must be less than 128 characters'
+    },
+    city : {
+        notEmpty: 'A city is required',
+        notNull: 'A city is required',
+        len: 'City must be less than 128 characters'
+    },
+    location: {
+        notEmpty: 'An adress is required',
+        notNull: 'An adress is required',
+        len: 'Adress must be less than 256 characters'
+    },
+    postal_code: {
+        notEmpty: 'A postal code is required',
+        notNull: 'A postal code is required',
+        len: 'Postal code must be less than 56 characters'
+    },
+    region: {
+        notEmpty: 'A region is required',
+        notNull: 'A region is required',
+        len: 'Region must be less than 128 characters'
+    },
+    comment: {
+        len: 'Comment must be less than 256 characters'
+    }
+};
+
 export const loginError = {
     wrong_credentials: 'Vos identifiants sont incorrects'
 };
