@@ -63,7 +63,7 @@ export const CompanyModel = (sequelize: Sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         },
-        adress :{
+        adress_id :{
             type: DataTypes.UUID,
             allowNull: false,
             references: {
@@ -75,3 +75,5 @@ export const CompanyModel = (sequelize: Sequelize) => {
 };
 
 export const Company = CompanyModel(sequelize);
+
+Company.hasOne(Adress);

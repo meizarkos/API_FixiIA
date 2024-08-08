@@ -81,7 +81,7 @@ export const RequestModel = (sequelize: Sequelize) => {
             allowNull: false,
             defaultValue: 0
         },
-        adress :{
+        adress_id :{
             type: DataTypes.UUID,
             allowNull: false,
             references: {
@@ -93,3 +93,5 @@ export const RequestModel = (sequelize: Sequelize) => {
 };
 
 export const Request = RequestModel(sequelize);
+
+Request.hasOne(Adress);
