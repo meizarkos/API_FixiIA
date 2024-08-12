@@ -27,7 +27,7 @@ export async function deleteFunc(res: Response, config: CrudAdmin, id: Identifie
     }
 }
 
-export async function deleteFuncId(res: Response, config: CrudAdmin, id: Identifier) {
+export async function deleteFuncId(res: Response, config: CrudAdmin, id: Identifier): Promise<number> {
     if (config.delete !== undefined && config.delete === false) {
         res.status(500).json({
             error: 'Error in the server',

@@ -1,4 +1,4 @@
-import { deleteFunc, deleteFuncId } from '../utilsCrudUser';
+import { deleteFuncId } from '../utilsCrudUser';
 import { Request, Response, Application } from 'express';
 import { requestCrud, adressCrud } from '../../models/crud';
 import { Request as RequestModel } from '../../models';
