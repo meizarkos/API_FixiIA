@@ -7,11 +7,9 @@ export const deleteRequestAndAdress = (app: Application) => {
     app.delete(`${requestCrud.route}_id/:uuid`, async (req: Request, res: Response) => {
       try{
         const request = await RequestModel.findOne({ where: { uuid: req.params.uuid } });
-        const resDel = deleteFuncId(res, requestCrud, req.params.uuid);
+        const resDel = await deleteFuncId(res, requestCrud, req.params.uuid);
         if(resDel) return;
-        console.log(request.getDataValue('adress_id'));
-        const resDelAdress = deleteFuncId(res, adressCrud, request.getDataValue('adress_id'));
-        console.log(resDelAdress);
+        const resDelAdress = await deleteFuncId(res, adressCrud, request.getDataValue('adress_id'));
         if(resDelAdress) return;
         res.status(200).json({ message: `Item deleted from ${requestCrud.route} and ${adressCrud.route}` });
       }
