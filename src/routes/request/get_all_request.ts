@@ -4,7 +4,7 @@ import { requestCrud } from '../../models/crud';
 import { classByNewer,isDateInThePast } from '../../utils';
 
 export const getAllRequestIfDateOk = (app: Application) => {
-    app.get(`${requestCrud.route}_token`, async (req: Request, res: Response) => {
+    app.get(`${requestCrud.route}_all`, async (req: Request, res: Response) => {
         const item = await getAllFromCrud(res, requestCrud);
         if (item === null) {
             return;
