@@ -76,7 +76,7 @@ export const getCrudById = async (res : Response, config: CrudAdmin,id:Identifie
         const item = await config.model.findOne({ where: {uuid : id} });
 
         if (!item) {
-            res.status(404).json({ message: `Item not found in ${config.route}` });
+            res.status(404).json({ message: `Item not found in ${config.route} with ${id}`});
             return null;
         }
 

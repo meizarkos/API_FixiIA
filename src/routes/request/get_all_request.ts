@@ -1,6 +1,6 @@
 import { getAllFromCrud, getCrudById } from '../utilsCrudUser';
 import { Request, Response, Application } from 'express';
-import { requestCrud } from '../../models/crud';
+import { requestCrud,adressCrud } from '../../models/crud';
 import { classByNewer,isDateInThePast } from '../../utils';
 
 export const getAllRequestIfDateOk = (app: Application) => {
@@ -16,7 +16,7 @@ export const getAllRequestIfDateOk = (app: Application) => {
                 i--;
             }
             else{
-              const adresse = await getCrudById(res, requestCrud, classNewer[i].getDataValue('adress_id'));
+              const adresse = await getCrudById(res, adressCrud, classNewer[i].getDataValue('adress_id'));
               if(adresse === null){
                 return;
               }
