@@ -20,7 +20,7 @@ export const getAllRequestIfDateOk = (app: Application) => {
               if(adresse === null){
                 return;
               }
-              classNewer[i].setDataValue('adress', adresse.getDataValue('city')); 
+              classNewer[i].setDataValue('city', adresse.getDataValue('city')); 
             }
         }
         res.status(200).json({ message: `Item found in ${requestCrud.route}`, item: classNewer });
