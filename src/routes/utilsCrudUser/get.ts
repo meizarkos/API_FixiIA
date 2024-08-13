@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { CrudAdmin } from '../../models/crud';
-import { Model } from 'sequelize';
+import { Model, Identifier } from 'sequelize';
 
 /* eslint-disable */
 export async function getCrudByIdInToken(res: Response, req: Request, config: CrudAdmin): Promise<Model<any, any>[]> {
@@ -70,3 +70,20 @@ export const getAllFromCrud = async (res: Response, config: CrudAdmin): Promise<
         return null;
     }
 };
+
+export const getCrudById = async (res : Response, config: CrudAdmin,id:Identifier): Promise<Model<any, any>> => {
+    try {
+        const item = await config.model.findOne({ where: {uuid : id} });
+
+        if (!item) {
+            res.status(404).json({ message: `Item not found in ${config.route}` });
+            return null;
+        }
+
+        return item;
+    } catch (e: unknown) {
+        console.log(e);
+        res.status(500).json({ error: 'Error in the server', message: 'Error getting item.' });
+        return null;
+    }
+}

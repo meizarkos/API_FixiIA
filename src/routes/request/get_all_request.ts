@@ -1,4 +1,4 @@
-import { getAllFromCrud } from '../utilsCrudUser';
+import { getAllFromCrud, getCrudById } from '../utilsCrudUser';
 import { Request, Response, Application } from 'express';
 import { requestCrud } from '../../models/crud';
 import { classByNewer,isDateInThePast } from '../../utils';
@@ -14,6 +14,13 @@ export const getAllRequestIfDateOk = (app: Application) => {
             if(isDateInThePast(classNewer[i].getDataValue('intervention_date'))){
                 classNewer.splice(i, 1);
                 i--;
+            }
+            else{
+              const adresse = await getCrudById(res, requestCrud, classNewer[i].getDataValue('adress_id'));
+              if(adresse === null){
+                return;
+              }
+              classNewer[i].setDataValue('adress', adresse.getDataValue('city')); 
             }
         }
         res.status(200).json({ message: `Item found in ${requestCrud.route}`, item: classNewer });
