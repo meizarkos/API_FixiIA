@@ -36,18 +36,6 @@ export const EstimateModel = (sequelize: Sequelize) => {
                 key: 'uuid'
             }
         },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: {
-                    args: [0, 1280],
-                    msg: estimateModelError.description.len
-                },
-                notEmpty: { msg: estimateModelError.description.notEmpty },
-                notNull: { msg: estimateModelError.description.notNull }
-            }
-        },
         price: {
             type: DataTypes.FLOAT,
             allowNull: false,
