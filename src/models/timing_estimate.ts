@@ -26,7 +26,7 @@ export const TimingEstimateModel = (sequelize: Sequelize) => {
                 notNull: { msg: timingEstimateModelError.time.notNull }
             }
         },
-        status:{
+        status: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -35,7 +35,7 @@ export const TimingEstimateModel = (sequelize: Sequelize) => {
                     msg: timingEstimateModelError.status.len
                 },
                 notEmpty: { msg: timingEstimateModelError.status.notEmpty },
-                notNull: { msg: timingEstimateModelError.status.notNull },
+                notNull: { msg: timingEstimateModelError.status.notNull }
             },
             defaultValue: timingEstimateModelError.status.pending
         }

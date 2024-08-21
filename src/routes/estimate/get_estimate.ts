@@ -1,16 +1,16 @@
 import { Request, Response, Application } from 'express';
-import { estimateCrud,timingEstimateCrud } from '../../models/crud';
+import { estimateCrud, timingEstimateCrud } from '../../models/crud';
 import { classByNewer } from '../../utils';
-import { Request as RequestModel,Adress } from '../../models';
+import { Request as RequestModel, Adress } from '../../models';
 
 async function getEstimateForAll(app: Application, route: string, status: string) {
     app.get(`${estimateCrud.route}_all${route}`, async (req: Request, res: Response) => {
         const item = await estimateCrud.model.findAll({
             where: {
                 company_id: req.jwt.payload.id,
-                status : status
+                status: status
             }
-        })
+        });
 
         if (item === null) {
             return;
@@ -26,18 +26,15 @@ async function getEstimateForAll(app: Application, route: string, status: string
             });
             const request = await RequestModel.findByPk(classNewer[i].getDataValue('request_id'));
             const adrese = await Adress.findByPk(request.getDataValue('adress_id'));
-
             classNewer[i].setDataValue('timing', timing);
             classNewer[i].setDataValue('request', request);
             classNewer[i].getDataValue('request').setDataValue('adress', adrese);
-          }
-          return res.status(200).json({ message: `Item found in ${estimateCrud.route}`, item: classNewer });
-      });
-    };
+        }
+
+        return res.status(200).json({ message: `Item found in ${estimateCrud.route}`, item: classNewer });
+    });
+}
 
 export const getAllPendingRequest = async (app: Application) => {
     await getEstimateForAll(app, '_pending', 'pending');
-};    
-
-
-    
+};

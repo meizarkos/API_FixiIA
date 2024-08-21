@@ -1,7 +1,7 @@
 import { createFunctionId } from '../utilsCrudUser';
 import { Request, Response, Application } from 'express';
 import { estimateCrud } from '../../models/crud';
-import { TimingEstimate, Request  as RequestModel } from '../../models';
+import { TimingEstimate, Request as RequestModel } from '../../models';
 import { Model } from 'sequelize';
 
 export const postEstimate = (app: Application) => {
