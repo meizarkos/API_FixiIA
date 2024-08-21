@@ -1,6 +1,7 @@
 import { Request, Response, Application } from 'express';
 import { estimateCrud,timingEstimateCrud } from '../../models/crud';
 import { classByNewer } from '../../utils';
+import { Request as RequestModel,Adress } from '../../models';
 
 async function getEstimateForAll(app: Application, route: string, status: string) {
     app.get(`${estimateCrud.route}_all${route}`, async (req: Request, res: Response) => {
@@ -23,7 +24,12 @@ async function getEstimateForAll(app: Application, route: string, status: string
                     estimate_id: classNewer[i].getDataValue('uuid')
                 }
             });
+            const request = await RequestModel.findByPk(classNewer[i].getDataValue('request_id'));
+            const adrese = await Adress.findByPk(request.getDataValue('address_id'));
+
             classNewer[i].setDataValue('timing', timing);
+            classNewer[i].setDataValue('request', request);
+            classNewer[i].getDataValue('request').setDataValue('adress', adrese);
           }
           res.status(200).json({ message: `Item found in ${estimateCrud.route}`, item: classNewer });
       });
