@@ -4,8 +4,6 @@ import { estimateCrud } from '../../models/crud';
 
 export const postEstimate = (app: Application) => {
     app.post(`${estimateCrud.route}_id`, async (req: Request, res: Response) => {
-        const timings = req.body.timing;
-        req.body.timing = null;
         console.log(req.body);
         const estimate = await createFunctionId(res, req, estimateCrud, true);
         console.log(estimate);
