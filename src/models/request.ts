@@ -76,12 +76,12 @@ export const RequestModel = (sequelize: Sequelize) => {
             },
             defaultValue: requestModelError.status.pending
         },
-        number_of_estimate :{
+        number_of_estimate: {
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 0
         },
-        adress_id :{
+        adress_id: {
             type: DataTypes.UUID,
             allowNull: false,
             references: {

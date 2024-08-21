@@ -44,7 +44,7 @@ export const companyModelError = {
         notNull: 'A location is required',
         len: 'Location text must be less than 128 characters'
     },
-    adress : {
+    adress: {
         notEmpty: 'An adress is required',
         notNull: 'An adress is required',
         len: 'Adress must be less than 256 characters'
@@ -68,10 +68,10 @@ export const requestModelError = {
         notNull: 'A category is required',
         len: 'Category must be less than 128 characters'
     },
-    title : {
-        notEmpty : 'A title is required',
-        notNull : 'A title is required',
-        len : 'Title must be less than 128 characters'
+    title: {
+        notEmpty: 'A title is required',
+        notNull: 'A title is required',
+        len: 'Title must be less than 128 characters'
     },
     description: {
         notEmpty: 'A description is required',
@@ -88,7 +88,7 @@ export const requestModelError = {
         pending: 'Pending',
         len: 'Status must be less than 128 characters'
     },
-    adress : {
+    adress: {
         notEmpty: 'An adress is required',
         notNull: 'An adress is required',
         len: 'Adress must be less than 256 characters'
@@ -128,12 +128,12 @@ export const estimateModelError = {
 };
 
 export const adressModelError = {
-    country : {
+    country: {
         notEmpty: 'A country is required',
         notNull: 'A country is required',
         len: 'Country must be less than 128 characters'
     },
-    city : {
+    city: {
         notEmpty: 'A city is required',
         notNull: 'A city is required',
         len: 'City must be less than 128 characters'
@@ -162,6 +162,12 @@ export const timingEstimateModelError = {
     time: {
         notEmpty: 'A time is required',
         notNull: 'A time is required'
+    },
+    status: {
+        notEmpty: 'A status is required',
+        notNull: 'A status is required',
+        pending: 'Pending',
+        len: 'Status must be less than 32 characters'
     }
 };
 

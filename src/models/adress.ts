@@ -16,9 +16,9 @@ export const AdressModel = (sequelize: Sequelize) => {
                 notEmpty: { msg: adressModelError.country.notEmpty },
                 notNull: { msg: adressModelError.country.notNull },
                 len: {
-                  args: [1, 128],
-                  msg: adressModelError.country.len
-              }
+                    args: [1, 128],
+                    msg: adressModelError.country.len
+                }
             }
         },
         city: {
@@ -45,19 +45,19 @@ export const AdressModel = (sequelize: Sequelize) => {
                 }
             }
         },
-        postal_code:{
-          type: DataTypes.STRING,
-          allowNull: false,
-          validate: {
-              len: {
-                  args: [0, 56],
-                  msg: adressModelError.postal_code.len
-              },
-              notEmpty: { msg: adressModelError.postal_code.notEmpty },
-              notNull: { msg: adressModelError.postal_code.notNull }
-          }
+        postal_code: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: {
+                    args: [0, 56],
+                    msg: adressModelError.postal_code.len
+                },
+                notEmpty: { msg: adressModelError.postal_code.notEmpty },
+                notNull: { msg: adressModelError.postal_code.notNull }
+            }
         },
-        region:{
+        region: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -69,16 +69,16 @@ export const AdressModel = (sequelize: Sequelize) => {
                 notNull: { msg: adressModelError.region.notNull }
             }
         },
-        comment:{
-          type: DataTypes.STRING,
-          allowNull: true,
-          validate: {
-              len: {
-                  args: [0, 256],
-                  msg: adressModelError.comment.len
-              },
-          }
-      }
+        comment: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            validate: {
+                len: {
+                    args: [0, 256],
+                    msg: adressModelError.comment.len
+                }
+            }
+        }
     });
 };
 

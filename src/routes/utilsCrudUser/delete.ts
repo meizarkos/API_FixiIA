@@ -52,5 +52,3 @@ export async function deleteFuncId(res: Response, config: CrudAdmin, id: Identif
         return 1;
     }
 }
-
-

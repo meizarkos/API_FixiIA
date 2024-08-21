@@ -6,6 +6,6 @@ export const getRequestDetail = (app: Application) => {
     app.get(`/request_detail/:uuid`, async (req: Request, res: Response) => {
         const request = await RequestModel.findOne({ where: { uuid: req.params.uuid } });
         const address = await Adress.findOne({ where: { uuid: request.getDataValue('adress_id') } });
-        res.status(200).json({request, address});
+        res.status(200).json({ request, address });
     });
 };

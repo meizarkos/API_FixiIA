@@ -18,13 +18,26 @@ export const TimingEstimateModel = (sequelize: Sequelize) => {
                 key: 'uuid'
             }
         },
-        time:{
+        time: {
             type: DataTypes.TIME,
             allowNull: false,
             validate: {
                 notEmpty: { msg: timingEstimateModelError.time.notEmpty },
                 notNull: { msg: timingEstimateModelError.time.notNull }
             }
+        },
+        status:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: {
+                    args: [0, 32],
+                    msg: timingEstimateModelError.status.len
+                },
+                notEmpty: { msg: timingEstimateModelError.status.notEmpty },
+                notNull: { msg: timingEstimateModelError.status.notNull },
+            },
+            defaultValue: timingEstimateModelError.status.pending
         }
     });
 };

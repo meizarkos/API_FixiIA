@@ -8,12 +8,20 @@ export const postEstimate = (app: Application) => {
     app.post(`${estimateCrud.route}_id`, async (req: Request, res: Response) => {
         const timing = req.body.timing;
         delete req.body.timing;
-        const estimate = await createFunctionId(res, req, estimateCrud, true) as Model<any,any>;
+
+        /* eslint-disable */
+        const estimate = (await createFunctionId(res, req, estimateCrud, true)) as Model<any, any>;
+
         if (estimate === null) return;
-        await Promise.all(timing.map(async(time: number[])=> {
-            const timeParse = `${time[0]}:${time[1]}:00`;
-            await TimingEstimate.create({ time: timeParse, estimate_id: estimate.getDataValue('uuid')});
-        }));
-        res.status(201).json({ message: `Item created in ${estimateCrud.route}`, item: estimate });
+
+        await Promise.all(
+            timing.map(async (time: number[]) => {
+                const timeParse = `${time[0]}:${time[1]}:00`;
+                await TimingEstimate.create({ time: timeParse, estimate_id: estimate.getDataValue('uuid') });
+            })
+        );
+        res.status(201).json({
+            message: `Item created in ${estimateCrud.route} and timing created in timing_estimate`
+        });
     });
 };

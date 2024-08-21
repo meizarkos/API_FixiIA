@@ -1,10 +1,9 @@
 import { Request, Response } from 'express';
 import { CrudAdmin } from '../../models/crud';
 import { getAllErrors } from '../../utils';
-import { ValidationError, UniqueConstraintError, Model} from 'sequelize';
+import { ValidationError, UniqueConstraintError } from 'sequelize';
 
-
-export async function createFunctionId(res: Response, req: Request, config: CrudAdmin,returnElement = false){
+export async function createFunctionId(res: Response, req: Request, config: CrudAdmin, returnElement = false) {
     if (config.post !== undefined && config.post === false) {
         res.status(500).json({
             error: 'Error in the server',
@@ -25,15 +24,17 @@ export async function createFunctionId(res: Response, req: Request, config: Crud
             });
             return null;
         }
-        
+
         if (config.champNameToFillWithTokenId !== undefined) {
             req.body[config.champNameToFillWithTokenId] = req.jwt.payload.id;
         }
 
         const newItem = await config.model.create(req.body);
+
         if (returnElement) {
             return newItem;
         }
+
         return res.status(201).json({ message: `Item created in ${config.route}`, item: newItem });
     } catch (e: unknown) {
         const attributes = Object.keys(config.model.getAttributes());

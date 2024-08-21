@@ -63,7 +63,7 @@ export const CompanyModel = (sequelize: Sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         },
-        adress_id :{
+        adress_id: {
             type: DataTypes.UUID,
             allowNull: false,
             references: {
