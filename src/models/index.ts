@@ -4,3 +4,4 @@ export * from './availableDate';
 export * from './request';
 export * from './estimate';
 export * from './adress';
+export * from './timing_estimate';

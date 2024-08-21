@@ -60,3 +60,9 @@ export const adressCrud: CrudAdmin = {
     route: '/adresses',
     forbidden: ['uuid'],
 };
+
+export const timingEstimateCrud: CrudAdmin = {
+    model: models.TimingEstimate,
+    route: '/timing_estimates',
+    forbidden: ['uuid'],
+};

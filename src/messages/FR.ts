@@ -158,6 +158,13 @@ export const adressModelError = {
     }
 };
 
+export const timingEstimateModelError = {
+    time: {
+        notEmpty: 'A time is required',
+        notNull: 'A time is required'
+    }
+};
+
 export const loginError = {
     wrong_credentials: 'Vos identifiants sont incorrects'
 };
