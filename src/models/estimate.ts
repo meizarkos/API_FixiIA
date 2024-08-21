@@ -40,7 +40,11 @@ export const EstimateModel = (sequelize: Sequelize) => {
             type: DataTypes.FLOAT,
             allowNull: false,
             validate: {
-                notPositive: { msg: estimateModelError.price.notPositive },
+                notNegative: (value: number) => {
+                    if (value <= 0) {
+                        throw new Error(estimateModelError.price.notPositive);
+                    }
+                },
                 notEmpty: { msg: estimateModelError.price.notEmpty },
                 notNull: { msg: estimateModelError.price.notNull }
             }

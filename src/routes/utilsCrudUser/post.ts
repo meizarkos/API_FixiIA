@@ -18,8 +18,6 @@ export async function createFunctionId(res: Response, req: Request, config: Crud
             (attr) => !config.forbidden.includes(attr)
         );
 
-        console.log(authorizedAttributes)
-
         if (Object.keys(req.body).some((key) => !authorizedAttributes.includes(key))) {
             res.status(400).json({
                 error: 'Bad Request',
@@ -27,7 +25,8 @@ export async function createFunctionId(res: Response, req: Request, config: Crud
             });
             return null;
         }
-
+        
+        
         if (config.champNameToFillWithTokenId !== undefined) {
             req.body[config.champNameToFillWithTokenId] = req.jwt.payload.id;
         }
