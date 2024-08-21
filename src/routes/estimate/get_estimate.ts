@@ -31,12 +31,12 @@ async function getEstimateForAll(app: Application, route: string, status: string
             classNewer[i].setDataValue('request', request);
             classNewer[i].getDataValue('request').setDataValue('adress', adrese);
           }
-          res.status(200).json({ message: `Item found in ${estimateCrud.route}`, item: classNewer });
+          return res.status(200).json({ message: `Item found in ${estimateCrud.route}`, item: classNewer });
       });
     };
 
-export const getAllPendingRequest = (app: Application) => {
-    getEstimateForAll(app, '_pending', 'pending');
+export const getAllPendingRequest = async (app: Application) => {
+    await getEstimateForAll(app, '_pending', 'pending');
 };    
 
 
