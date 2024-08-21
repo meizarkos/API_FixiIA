@@ -57,6 +57,18 @@ export const EstimateModel = (sequelize: Sequelize) => {
             type: DataTypes.DATE,
             allowNull: true
         },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+            validate: {
+                len: {
+                    args: [0, 1280],
+                    msg: estimateModelError.description.len
+                },
+                notEmpty: { msg: estimateModelError.description.notEmpty },
+                notNull: { msg: estimateModelError.description.notNull }
+            }
+        },
         commentary: {
             type: DataTypes.TEXT,
             validate: {
