@@ -58,21 +58,21 @@ export const EstimateModel = (sequelize: Sequelize) => {
             allowNull: true
         },
         commentary: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             validate: {
                 len: {
-                    args: [0, 1280],
+                    args: [0, 401],
                     msg: estimateModelError.commentary.len
                 }
             },
             allowNull: true
         },
         status: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: {
-                    args: [0, 401],
+                    args: [0, 128],
                     msg: estimateModelError.status.len
                 },
                 notEmpty: { msg: estimateModelError.status.notEmpty },
