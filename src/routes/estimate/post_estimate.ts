@@ -24,7 +24,7 @@ export const postEstimate = (app: Application) => {
         
         await RequestModel.increment(
             { number_of_estimate:  1 },
-            { where: { uuid: req.params.id } }
+            { where: { uuid: req.body.request_id } }
         );
 
         res.status(201).json({
