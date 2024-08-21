@@ -25,7 +25,7 @@ async function getEstimateForAll(app: Application, route: string, status: string
                 }
             });
             const request = await RequestModel.findByPk(classNewer[i].getDataValue('request_id'));
-            const adrese = await Adress.findByPk(request.getDataValue('address_id'));
+            const adrese = await Adress.findByPk(request.getDataValue('adress_id'));
 
             classNewer[i].setDataValue('timing', timing);
             classNewer[i].setDataValue('request', request);
