@@ -8,6 +8,7 @@ export const postEstimate = (app: Application) => {
         delete req.body.timing;
         const estimate = await createFunctionId(res, req, estimateCrud, true);
         if (estimate === null) return;
+        console.log(timing);
         res.status(201).json({ message: `Item created in ${estimateCrud.route}`, item: estimate });
     });
 };
