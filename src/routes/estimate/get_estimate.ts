@@ -2,12 +2,13 @@ import { Request, Response, Application } from 'express';
 import { estimateCrud, timingEstimateCrud } from '../../models/crud';
 import { classByNewer } from '../../utils';
 import { Request as RequestModel, Adress } from '../../models';
+import { Identifier } from 'sequelize';
 
-async function getEstimateForAll(app: Application, route: string, status: string) {
+async function getEstimateForAll(app: Application, route: string, status: string,whereToFindId:any) {
     app.get(`${estimateCrud.route}_all${route}`, async (req: Request, res: Response) => {
         const item = await estimateCrud.model.findAll({
             where: {
-                company_id: req.jwt.payload.id,
+                whereToFindId: req.jwt.payload.id,
                 status: status
             }
         });
@@ -36,5 +37,5 @@ async function getEstimateForAll(app: Application, route: string, status: string
 }
 
 export const getAllPendingRequest = async (app: Application) => {
-    await getEstimateForAll(app, '_pending', 'pending');
+    await getEstimateForAll(app, '_pending', 'pending','company_id');
 };
