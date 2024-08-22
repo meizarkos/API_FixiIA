@@ -8,7 +8,7 @@ async function getEstimateForAll(app: Application, route: string, status: string
     app.get(`${estimateCrud.route}_all${route}`, async (req: Request, res: Response) => {
         const item = await estimateCrud.model.findAll({
             where: {
-                whereToFindId: req.jwt.payload.id,
+                [whereToFindId]: req.jwt.payload.id,
                 status: status
             }
         });
