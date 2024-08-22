@@ -44,7 +44,7 @@ export const getAllAcceptedRequest = async (app: Application) => {
 }
 
 export const getAllRejectedRequest = async (app: Application) => {
-    await getEstimateForAll(app, '_rejected', 'rejected','company_id');
+    await getEstimateForAll(app, '_refused', 'refused','company_id');
 }
 
 export const getAllPendingEstimate = async (app: Application) => {
@@ -56,5 +56,5 @@ export const getAllAcceptedEstimate = async (app: Application) => {
 }
 
 export const getAllRejectedEstimate = async (app: Application) => {
-    await getEstimateForAll(app, '_rejected_user', 'rejected','user_id');
+    await getEstimateForAll(app, '_refused_user', 'refused','user_id');
 }
