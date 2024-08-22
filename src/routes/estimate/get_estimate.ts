@@ -2,7 +2,6 @@ import { Request, Response, Application } from 'express';
 import { estimateCrud, timingEstimateCrud } from '../../models/crud';
 import { classByNewer } from '../../utils';
 import { Request as RequestModel, Adress } from '../../models';
-import { Identifier } from 'sequelize';
 
 async function getEstimateForAll(app: Application, route: string, status: string,whereToFindId:any) {
     app.get(`${estimateCrud.route}_all${route}`, async (req: Request, res: Response) => {
@@ -39,3 +38,23 @@ async function getEstimateForAll(app: Application, route: string, status: string
 export const getAllPendingRequest = async (app: Application) => {
     await getEstimateForAll(app, '_pending', 'pending','company_id');
 };
+
+export const getAllAcceptedRequest = async (app: Application) => {
+    await getEstimateForAll(app, '_accepted', 'accepted','company_id');
+}
+
+export const getAllRejectedRequest = async (app: Application) => {
+    await getEstimateForAll(app, '_rejected', 'rejected','company_id');
+}
+
+export const getAllPendingEstimate = async (app: Application) => {
+    await getEstimateForAll(app, '_pending_user', 'pending','user_id');
+};
+
+export const getAllAcceptedEstimate = async (app: Application) => {
+    await getEstimateForAll(app, '_accepted_user', 'accepted','user_id');
+}
+
+export const getAllRejectedEstimate = async (app: Application) => {
+    await getEstimateForAll(app, '_rejected_user', 'rejected','user_id');
+}
