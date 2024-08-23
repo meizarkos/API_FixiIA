@@ -2,6 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
 import { companyModelError } from '../messages';
 import { Adress } from './adress';
+import { AvailableDate } from './availableDate';
 
 export const CompanyModel = (sequelize: Sequelize) => {
     return sequelize.define('companie', {
@@ -76,4 +77,6 @@ export const CompanyModel = (sequelize: Sequelize) => {
 
 export const Company = CompanyModel(sequelize);
 
-Company.hasOne(Adress);
+Company.hasMany(AvailableDate,{
+    foreignKey: 'company_id',
+});

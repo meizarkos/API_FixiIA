@@ -93,5 +93,3 @@ export const RequestModel = (sequelize: Sequelize) => {
 };
 
 export const Request = RequestModel(sequelize);
-
-Request.hasOne(Adress);

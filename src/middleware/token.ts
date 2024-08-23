@@ -6,17 +6,18 @@ export const tokenText = 'token';
 
 export const verifyToken = (req : Request , res : Response , next : NextFunction) => {
 
-  const token = (req.headers['authorization'] as String)?.split(' ')[1];
+    const token = (req.headers['authorization'] as String)?.split(' ')[1];
 
   if (!token) {
-      return res.status(401).json({ message: 'Access Denied: No token provided.' });
+      return next();
+      //return res.status(401).json({ message: 'Access Denied: No token provided.' });
   }
 
   try {
       const decoded = jwt.verify(token, keyToken);
       req[tokenText] = decoded;
-      next();
+      return next();
   } catch (err) {
-      res.status(400).json({ message: 'Invalid token.' });
+      return res.status(400).json({ message: 'Invalid token.' });
   }
 };

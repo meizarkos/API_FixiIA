@@ -4,6 +4,7 @@ import { User } from './user';
 import { Company } from './company';
 import { Request } from './request';
 import { estimateModelError } from '../messages';
+import { TimingEstimate } from './timing_estimate';
 
 export const EstimateModel = (sequelize: Sequelize) => {
     return sequelize.define('estimate', {
@@ -100,3 +101,7 @@ export const EstimateModel = (sequelize: Sequelize) => {
 };
 
 export const Estimate = EstimateModel(sequelize);
+
+Estimate.hasMany(TimingEstimate,{
+   foreignKey: 'estimate_id',
+})

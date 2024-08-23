@@ -23,7 +23,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     if (exemptRoutes.includes(req.path)) {
         return next();
     }
-
     verifyToken(req, res, next);
 });
 
