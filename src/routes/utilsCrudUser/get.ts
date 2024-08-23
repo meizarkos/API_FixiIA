@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { CrudAdmin } from '../../models/crud';
 import { Model, Identifier } from 'sequelize';
+import { tokenText } from '../../middleware/token';
 
 /* eslint-disable */
 export async function getCrudByIdInToken(res: Response, req: Request, config: CrudAdmin): Promise<Model<any, any>[]> {
@@ -13,7 +14,7 @@ export async function getCrudByIdInToken(res: Response, req: Request, config: Cr
     }
 
     try {
-        if (!req.jwt.payload.id) {
+        if (!req[tokenText].id) {
             res.status(401).json({ message: `Token not found in ${config.route}token` });
             return null;
         }
@@ -29,7 +30,7 @@ export async function getCrudByIdInToken(res: Response, req: Request, config: Cr
         const champAsPrimaryKey = config.champNameToFindById;
 
         const whereClause = {};
-        whereClause[champAsPrimaryKey] = req.jwt.payload.id; //user_id : req.jwt.payload.id
+        whereClause[champAsPrimaryKey] = req[tokenText].id;
 
         const item = await config.model.findAll({ where: whereClause });
 

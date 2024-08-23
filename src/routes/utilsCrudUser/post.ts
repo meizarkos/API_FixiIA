@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { CrudAdmin } from '../../models/crud';
 import { getAllErrors } from '../../utils';
 import { ValidationError, UniqueConstraintError } from 'sequelize';
+import { tokenText } from '../../middleware/token';
 
 export async function createFunctionId(res: Response, req: Request, config: CrudAdmin, returnElement = false) {
     if (config.post !== undefined && config.post === false) {
@@ -26,7 +27,7 @@ export async function createFunctionId(res: Response, req: Request, config: Crud
         }
 
         if (config.champNameToFillWithTokenId !== undefined) {
-            req.body[config.champNameToFillWithTokenId] = req.jwt.payload.id;
+            req.body[config.champNameToFillWithTokenId] = req[tokenText].id;
         }
 
         const newItem = await config.model.create(req.body);

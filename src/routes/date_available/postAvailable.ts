@@ -2,11 +2,12 @@ import { AvailableDate } from '../../models';
 import { Application, Request, Response } from 'express';
 import { getAllErrors } from '../../utils';
 import { UniqueConstraintError, ValidationError } from 'sequelize';
+import { tokenText } from '../../middleware/token';
 
 export const postAvailable = (app: Application) => {
     app.post('/monthAvailable', async (req: Request, res: Response) => {
         try {
-            const tokenId = req.jwt.payload.id;
+            const tokenId = req[tokenText].id;
 
             req.body.company_id = tokenId;
             //const date = parseDate(new Date(req.body.available_date));

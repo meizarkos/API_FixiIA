@@ -2,11 +2,12 @@ import { AvailableDate } from '../../models';
 import { Application, Request, Response } from 'express';
 import { getStartAndEndOfMonth } from '../../utils';
 import { Op } from 'sequelize';
+import { tokenText } from '../../middleware/token';
 
 export const getMonthToComeAllAvailable = (app: Application) => {
-    app.get('/monthAvailable', async (req: Request, res: Response) => {
+    app.get('/monthAvailable',async (req: Request, res: Response) => {
         try {
-            const tokenId = req.jwt.payload.id;
+            const tokenId = req[tokenText].id;
             const { startOfYear, endOfYear } = getStartAndEndOfMonth();
 
             const allAvailableInMonth = await AvailableDate.findAll({

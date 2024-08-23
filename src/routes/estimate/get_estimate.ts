@@ -2,12 +2,13 @@ import { Request, Response, Application } from 'express';
 import { estimateCrud, timingEstimateCrud } from '../../models/crud';
 import { classByNewer } from '../../utils';
 import { Request as RequestModel, Adress } from '../../models';
+import { tokenText } from '../../middleware/token';
 
 async function getEstimateForAll(app: Application, route: string, status: string,whereToFindId:any) {
     app.get(`${estimateCrud.route}_all${route}`, async (req: Request, res: Response) => {
         const item = await estimateCrud.model.findAll({
             where: {
-                [whereToFindId]: req.jwt.payload.id,
+                [whereToFindId]: req[tokenText].id,
                 status: status
             }
         });

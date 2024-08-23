@@ -1,4 +1,6 @@
 import { User, Company } from '../../models';
+import jwt from 'jsonwebtoken';
+import { keyToken } from '../../utils/data';
 import { Application, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { ValidationError, UniqueConstraintError } from 'sequelize';
@@ -22,8 +24,8 @@ async function register(req: Request, res: Response, model: ModelStatic<Model<an
             attributes: { exclude: ['password'] }
         });
 
-        const token = res.jwt({ id: valeur.getDataValue('uuid') });
-        res.status(200).send({ message: 'Créer', token: token.token });
+        const token = jwt.sign({ id : valeur.getDataValue('uuid') }, keyToken, { expiresIn: '1h' })
+        res.status(200).send({ message: 'Créer', token: token });
     } catch (e: unknown) {
         const attributes = Object.keys(model.getAttributes());
 
