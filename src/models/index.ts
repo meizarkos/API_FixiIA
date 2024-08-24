@@ -5,3 +5,5 @@ export * from './request';
 export * from './estimate';
 export * from './adress';
 export * from './timing_estimate';
+export * from './refused_estimate';
+export * from './time_slot_refused';

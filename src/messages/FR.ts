@@ -171,6 +171,25 @@ export const timingEstimateModelError = {
     }
 };
 
+export const refusedEstimateModelError = {
+    expected_price: {
+        notPositive: 'Price must be positive and not 0',
+        notFloat : 'Price must be a float'
+    },
+    expected_duration: {
+        notInt : 'Duration must be an integer',
+        notPositive: 'Duration must be positive and not 0'
+    }
+};
+
+export const timeSlotRefusedModelError = {
+    slot: {
+        notEmpty: 'A slot is required',
+        notNull: 'A slot is required',
+        len: 'Slot must be less than 32 characters'
+    }
+};
+
 export const loginError = {
     wrong_credentials: 'Vos identifiants sont incorrects'
 };
