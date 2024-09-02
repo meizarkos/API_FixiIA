@@ -74,7 +74,7 @@ export const refusedEstimateCrud: CrudAdmin = {
 };
 
 export const timeSlotRefusedCrud: CrudAdmin = {
-    model: models.RefusedEstimateTimeSlot,
+    model: models.ExpectedEstimateTimeSlot,
     route: '/time_slot_refused',
     forbidden: ['uuid'],
 };

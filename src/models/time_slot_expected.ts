@@ -3,7 +3,7 @@ import { sequelize } from '../utils/db_handler';
 import { RefusedEstimate } from './refused_estimate';
 import { timeSlotRefusedModelError } from '../messages';
 
-export const RefusedEstimateTimeSlotModel = (sequelize: Sequelize) => {
+export const ExpectedEstimateTimeSlotModel = (sequelize: Sequelize) => {
     return sequelize.define('refused_estimate_time_slot', {
         uuid: {
             type: DataTypes.UUID,
@@ -33,8 +33,8 @@ export const RefusedEstimateTimeSlotModel = (sequelize: Sequelize) => {
     });
 };
 
-export const RefusedEstimateTimeSlot = RefusedEstimateTimeSlotModel(sequelize);
+export const ExpectedEstimateTimeSlot = ExpectedEstimateTimeSlotModel(sequelize);
 
-RefusedEstimateTimeSlot.belongsTo(RefusedEstimate, {
+ExpectedEstimateTimeSlot.belongsTo(RefusedEstimate, {
   onDelete: 'CASCADE',
 });
