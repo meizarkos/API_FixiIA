@@ -36,5 +36,6 @@ export const ExpectedEstimateTimeSlotModel = (sequelize: Sequelize) => {
 export const ExpectedEstimateTimeSlot = ExpectedEstimateTimeSlotModel(sequelize);
 
 ExpectedEstimateTimeSlot.belongsTo(RefusedEstimate, {
+    foreignKey: 'refused_estimate_id',
   onDelete: 'CASCADE',
 });

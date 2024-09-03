@@ -104,4 +104,5 @@ export const Estimate = EstimateModel(sequelize);
 
 Estimate.hasMany(TimingEstimate,{
    foreignKey: 'estimate_id',
+    onDelete: 'CASCADE'
 })

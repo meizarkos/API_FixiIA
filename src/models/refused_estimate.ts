@@ -15,7 +15,7 @@ export const RefusedEstimateModel = (sequelize: Sequelize) => {
             allowNull: false,
             references: {
                 model: Estimate,
-                key: 'uuid'
+                key: 'uuid',
             }
         },
         expected_price: {
@@ -46,3 +46,8 @@ export const RefusedEstimateModel = (sequelize: Sequelize) => {
 };
 
 export const RefusedEstimate = RefusedEstimateModel(sequelize);
+
+RefusedEstimate.belongsTo(Estimate, {
+    foreignKey: 'estimate_id',
+    onDelete: 'CASCADE'
+});
