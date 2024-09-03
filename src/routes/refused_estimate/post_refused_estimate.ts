@@ -33,10 +33,10 @@ export const postEstimateRefused = (app: Application) => {
             { where: { uuid: estimateId } });
           
           const refused = await createFunctionId(res, req, refusedEstimateCrud, true) as Model<any, any>;
+          console.log(refused);
           if(!refused){
             return;
           }
-          console.log(refused);
           const refusedId = await refused.getDataValue('uuid');
 
           if(!listOfTiming || listOfTiming.length === 0){
