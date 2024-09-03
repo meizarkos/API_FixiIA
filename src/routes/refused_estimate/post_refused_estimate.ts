@@ -11,7 +11,7 @@ export const postEstimateRefused = (app: Application) => {
         const requestId = req.body.request_id;
         const acceptTimeId = req.body.time_id;
     
-        if(req.body.excepted_price && req.body.excepted_duration && req.body.expected_time && acceptTimeId){
+        if(req.body.excepted_price == null && req.body.excepted_duration == null && req.body.expected_time == null && acceptTimeId){
            await RequestModel.update(
             { status: 'Accepted' },
             { where: { uuid: requestId } });
