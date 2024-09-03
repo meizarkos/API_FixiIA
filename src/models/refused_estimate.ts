@@ -23,7 +23,10 @@ export const RefusedEstimateModel = (sequelize: Sequelize) => {
             allowNull: true,
             validate:{
                 isFloat: { msg:refusedEstimateModelError.expected_price.notFloat},
-                notNegative: (value: number) => {
+                notNegative: (value: number | null) => {
+                    if (value === null) {
+                        return;
+                    }
                   if (value <= 0) {
                       throw new Error(refusedEstimateModelError.expected_price.notPositive);
                   }
@@ -35,7 +38,10 @@ export const RefusedEstimateModel = (sequelize: Sequelize) => {
             allowNull: true,
             validate:{
               isInt: { msg: refusedEstimateModelError.expected_duration.notInt},
-              notNegative: (value: number) => {
+              notNegative: (value: number | null) => {
+                if (value === null) {
+                    return;
+                }
                 if (value <= 0) {
                     throw new Error(refusedEstimateModelError.expected_duration.notPositive);
                 }
