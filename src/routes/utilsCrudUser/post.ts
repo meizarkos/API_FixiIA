@@ -32,6 +32,8 @@ export async function createFunctionId(res: Response, req: Request, config: Crud
 
         const newItem = await config.model.create(req.body);
 
+        console.log(newItem);
+
         if (returnElement) {
             return newItem;
         }
