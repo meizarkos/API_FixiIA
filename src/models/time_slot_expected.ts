@@ -29,7 +29,7 @@ export const ExpectedEstimateTimeSlotModel = (sequelize: Sequelize) => {
                 notEmpty: { msg: timeSlotRefusedModelError.slot.notEmpty },
                 notNull: { msg: timeSlotRefusedModelError.slot.notNull }
             }
-        },
+        }
     });
 };
 
@@ -37,5 +37,5 @@ export const ExpectedEstimateTimeSlot = ExpectedEstimateTimeSlotModel(sequelize)
 
 ExpectedEstimateTimeSlot.belongsTo(RefusedEstimate, {
     foreignKey: 'refused_estimate_id',
-  onDelete: 'CASCADE',
+    onDelete: 'CASCADE'
 });

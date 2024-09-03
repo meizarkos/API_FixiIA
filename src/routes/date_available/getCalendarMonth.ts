@@ -5,7 +5,7 @@ import { Op } from 'sequelize';
 import { tokenText } from '../../middleware/token';
 
 export const getMonthToComeAllAvailable = (app: Application) => {
-    app.get('/monthAvailable',async (req: Request, res: Response) => {
+    app.get('/monthAvailable', async (req: Request, res: Response) => {
         try {
             const tokenId = req[tokenText].id;
             const { startOfYear, endOfYear } = getStartAndEndOfMonth();

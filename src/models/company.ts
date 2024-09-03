@@ -77,6 +77,6 @@ export const CompanyModel = (sequelize: Sequelize) => {
 
 export const Company = CompanyModel(sequelize);
 
-Company.hasMany(AvailableDate,{
-    foreignKey: 'company_id',
+Company.hasMany(AvailableDate, {
+    foreignKey: 'company_id'
 });

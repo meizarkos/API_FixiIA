@@ -4,7 +4,8 @@ import { classByNewer } from '../../utils';
 import { Request as RequestModel, Adress } from '../../models';
 import { tokenText } from '../../middleware/token';
 
-async function getEstimateForAll(app: Application, route: string, status: string,whereToFindId:any) {
+/* eslint-disable */
+async function getEstimateForAll(app: Application, route: string, status: string, whereToFindId: any) {
     app.get(`${estimateCrud.route}_all${route}`, async (req: Request, res: Response) => {
         const item = await estimateCrud.model.findAll({
             where: {
@@ -37,25 +38,25 @@ async function getEstimateForAll(app: Application, route: string, status: string
 }
 
 export const getAllPendingRequest = async (app: Application) => {
-    await getEstimateForAll(app, '_pending', 'pending','company_id');
+    await getEstimateForAll(app, '_pending', 'pending', 'company_id');
 };
 
 export const getAllAcceptedRequest = async (app: Application) => {
-    await getEstimateForAll(app, '_accepted', 'accepted','company_id');
-}
+    await getEstimateForAll(app, '_accepted', 'accepted', 'company_id');
+};
 
 export const getAllRejectedRequest = async (app: Application) => {
-    await getEstimateForAll(app, '_refused', 'refused','company_id');
-}
+    await getEstimateForAll(app, '_refused', 'refused', 'company_id');
+};
 
 export const getAllPendingEstimate = async (app: Application) => {
-    await getEstimateForAll(app, '_pending_user', 'pending','user_id');
+    await getEstimateForAll(app, '_pending_user', 'pending', 'user_id');
 };
 
 export const getAllAcceptedEstimate = async (app: Application) => {
-    await getEstimateForAll(app, '_accepted_user', 'accepted','user_id');
-}
+    await getEstimateForAll(app, '_accepted_user', 'accepted', 'user_id');
+};
 
 export const getAllRejectedEstimate = async (app: Application) => {
-    await getEstimateForAll(app, '_refused_user', 'refused','user_id');
-}
+    await getEstimateForAll(app, '_refused_user', 'refused', 'user_id');
+};

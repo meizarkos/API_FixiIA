@@ -174,10 +174,10 @@ export const timingEstimateModelError = {
 export const refusedEstimateModelError = {
     expected_price: {
         notPositive: 'Price must be positive and not 0',
-        notFloat : 'Price must be a float'
+        notFloat: 'Price must be a float'
     },
     expected_duration: {
-        notInt : 'Duration must be an integer',
+        notInt: 'Duration must be an integer',
         notPositive: 'Duration must be positive and not 0'
     }
 };

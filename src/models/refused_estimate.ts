@@ -1,6 +1,6 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
-import { refusedEstimateModelError, requestModelError } from '../messages';
+import { refusedEstimateModelError } from '../messages';
 import { Estimate } from './estimate';
 
 export const RefusedEstimateModel = (sequelize: Sequelize) => {
@@ -15,39 +15,41 @@ export const RefusedEstimateModel = (sequelize: Sequelize) => {
             allowNull: false,
             references: {
                 model: Estimate,
-                key: 'uuid',
+                key: 'uuid'
             }
         },
         expected_price: {
             type: DataTypes.FLOAT,
             allowNull: true,
-            validate:{
-                isFloat: { msg:refusedEstimateModelError.expected_price.notFloat},
+            validate: {
+                isFloat: { msg: refusedEstimateModelError.expected_price.notFloat },
                 notNegative: (value: number | null) => {
                     if (value === null) {
                         return;
                     }
-                  if (value <= 0) {
-                      throw new Error(refusedEstimateModelError.expected_price.notPositive);
-                  }
-              },
+
+                    if (value <= 0) {
+                        throw new Error(refusedEstimateModelError.expected_price.notPositive);
+                    }
+                }
             }
         },
         expected_duration: {
             type: DataTypes.INTEGER,
             allowNull: true,
-            validate:{
-              isInt: { msg: refusedEstimateModelError.expected_duration.notInt},
-              notNegative: (value: number | null) => {
-                if (value === null) {
-                    return;
+            validate: {
+                isInt: { msg: refusedEstimateModelError.expected_duration.notInt },
+                notNegative: (value: number | null) => {
+                    if (value === null) {
+                        return;
+                    }
+
+                    if (value <= 0) {
+                        throw new Error(refusedEstimateModelError.expected_duration.notPositive);
+                    }
                 }
-                if (value <= 0) {
-                    throw new Error(refusedEstimateModelError.expected_duration.notPositive);
-                }
-            },
-          }
-        },
+            }
+        }
     });
 };
 
