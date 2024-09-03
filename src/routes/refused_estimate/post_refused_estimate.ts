@@ -30,7 +30,6 @@ export const postEstimateRefused = (app: Application) => {
 
                 /* eslint-disable */
                 const refused = (await createFunctionId(res, req, refusedEstimateCrud, true)) as Model<any, any>;
-                console.log(refused);
 
                 if (!refused) {
                     return;
