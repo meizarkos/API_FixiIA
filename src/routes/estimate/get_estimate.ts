@@ -1,7 +1,7 @@
 import { Request, Response, Application } from 'express';
 import { estimateCrud, timingEstimateCrud } from '../../models/crud';
 import { classByNewer } from '../../utils';
-import { Request as RequestModel, Adress } from '../../models';
+import { Request as RequestModel, Adress, RefusedEstimate, ExpectedEstimateTimeSlot } from '../../models';
 import { tokenText } from '../../middleware/token';
 
 /* eslint-disable */
