@@ -3,6 +3,7 @@ import { refusedEstimateCrud } from '../../models/crud';
 import { Estimate, Request as RequestModel, TimingEstimate, ExpectedEstimateTimeSlot } from '../../models';
 import { createFunctionId } from '../utilsCrudUser';
 import { Model } from 'sequelize';
+import { status, post_refused_estimate } from '../../messages/FR';
 
 export const postEstimateRefused = (app: Application) => {
     app.post(`${refusedEstimateCrud.route}_id`, async (req: Request, res: Response) => {
@@ -12,21 +13,21 @@ export const postEstimateRefused = (app: Application) => {
             const acceptTimeId = req.body.time_id;
 
             if (
-                req.body.excepted_price == null &&
-                req.body.excepted_duration == null &&
+                req.body.expected_price == null &&
+                req.body.expected_duration == null &&
                 req.body.expected_time == null &&
                 acceptTimeId
             ) {
-                await RequestModel.update({ status: 'Accepted' }, { where: { uuid: requestId } });
-                await Estimate.update({ status: 'Accepted' }, { where: { uuid: estimateId } });
-                await TimingEstimate.update({ status: 'Accepted' }, { where: { uuid: acceptTimeId } });
-                return res.status(200).json({ message: `You accept the estimation` });
+                await RequestModel.update({ status: status.accepted }, { where: { uuid: requestId } });
+                await Estimate.update({ status: status.accepted }, { where: { uuid: estimateId } });
+                await TimingEstimate.update({ status: status.accepted }, { where: { uuid: acceptTimeId } });
+                return res.status(200).json({ message: post_refused_estimate.you_accept_the_estimation });
             } else {
                 const listOfTiming = req.body.expected_time as string[];
                 delete req.body.expected_time;
                 delete req.body.request_id;
                 delete req.body.time_id;
-                await Estimate.update({ status: 'Refused' }, { where: { uuid: estimateId } });
+                await Estimate.update({ status: status.refused }, { where: { uuid: estimateId } });
 
                 /* eslint-disable */
                 const refused = (await createFunctionId(res, req, refusedEstimateCrud, true)) as Model<any, any>;
@@ -39,9 +40,9 @@ export const postEstimateRefused = (app: Application) => {
 
                 if (!listOfTiming || listOfTiming.length === 0) {
                     if (acceptTimeId) {
-                        await TimingEstimate.update({ status: 'Accepted' }, { where: { uuid: acceptTimeId } });
+                        await TimingEstimate.update({ status: status.accepted }, { where: { uuid: acceptTimeId } });
                     } else {
-                        throw new Error('Error no time id');
+                        throw new Error(post_refused_estimate.error_no_time_id);
                     }
                 } else {
                     Promise.all(
@@ -54,11 +55,11 @@ export const postEstimateRefused = (app: Application) => {
                     );
                 }
 
-                return res.status(200).json({ message: `Estimation refused create ${refusedId}` });
+                return res.status(200).json({ message: `${post_refused_estimate.estimation_refused_create} ${refusedId}` });
             }
         } catch (e) {
             console.log(e);
-            res.status(500).json({ error: 'Error server', message: 'Error creating refused estimation.' });
+            res.status(500).json({ error: 'Error server', message: post_refused_estimate.error_creating_refused_estimation });
         }
     });
 };

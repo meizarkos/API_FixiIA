@@ -191,13 +191,26 @@ export const timeSlotRefusedModelError = {
 };
 
 export const loginError = {
-    wrong_credentials: 'Vos identifiants sont incorrects'
+    wrong_credentials: 'Credentials are wrong'
 };
 
 export const errorOccured = {
-    error_occured: 'Une erreur est survenue, réessayez plus tard'
+    error_occured: 'An error occured, try again later'
 };
 
 export const noResult = {
-    no_result: 'Aucun résultat'
+    no_result: 'No result found'
+};
+
+export const status = {
+    pending: 'Pending',
+    accepted: 'Accepted',
+    refused: 'Refused'
+};
+
+export const post_refused_estimate = {
+    error_no_time_id: 'Error no time id',
+    error_creating_refused_estimation: 'Error creating refused estimation.',
+    you_accept_the_estimation: 'You accept the estimation',
+    estimation_refused_create: 'Estimation refused create'
 };
